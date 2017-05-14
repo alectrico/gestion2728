@@ -1,5 +1,5 @@
 %h1 Evidencias
--if current_user.usuario.auditorias
+-if current_user.usuario
   - current_user.usuario.auditorias.each do |a|
     %section.row.text-center.placeholders
       %nav.navbar.navbar_pilled
