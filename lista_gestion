@@ -1,25 +1,11 @@
 /app/models/spec_helper.rb
 
-/app/controllers/application.curso_controller.rb
-/app/controllers/attachments_controller.rb
-/app/controllers/curso_controller.rb
-/app/controllers/pagos_controller.rb
-/app/controllers/facebook_controller.rb
-/app/controllers/fotos_controller.rb
-/app/controllers/proyectos_controller.rb
-/app/controllers/todos_controller.rb
-
-
-
-/app/controllers/landing_pages_controller.rb
-
 /app/views/curso
 /app/controllers/curso
 /app/models/curso
 
 /app/models/electrico
 /app/controllers/electrico
-/app/controllers/electrico_controller.rb
 /app/views/electrico
 
 /app/views/pago
