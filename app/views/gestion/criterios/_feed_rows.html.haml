@@ -1,0 +1,19 @@
+-#.col-xs-12.col-sm-12.col-md-12.col-lg-12
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %th
+      %th
+      %th
+      %th
+      %th
+    %tbody{:id => "criterios#{@gestion_tipo_auditoria.id}"}
+      =render partial: 'gestion/criterios/item_row',:id => "criterios#{@gestion_tipo_auditoria.id}",collection: @gestion_criterios,:locals => {:item_row => @gestion_criterio} if @gestion_criterios.any?
+
+-#l.microposts
+  %div{:id => "criterios#{@gestion_tipo_auditoria.id}"}
+    -if @gestion_criterios.any?
+      = render :partial => 'gestion/criterios/item_row' , :collection => @gestion_criterios,:locals => {:item_row => @gestion_criterio}
+
+
+

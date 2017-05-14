@@ -1,0 +1,55 @@
+-#=stylesheet_link_tag 'gestion/signin.css', media: 'screen', 'data-turbolinks-track': 'reload'
+
+.container
+  .text-center
+    %h1 Editar Perfil
+  .row
+    .col-lg-offset-3.col-lg-6.col-md-offset-3.col-md-6.col-sm-offset-2.col-sm-8.col-xs-12
+      .panel.panel-default
+        .panel-body
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:class => "form-signin", method: :put }) do |f|
+            = devise_error_messages!
+            -#%h2.form-signin-heading
+              Editar Perfil
+              -#{resource_name.to_s.humanize}
+            .form-group
+              = f.label :name, "Nombre"
+              = f.text_field(:name, autofocus: true, placeholder: 'Nombre', class: 'form-control')
+
+            .form-group
+              %label.sr-only{:for => "email"} email
+              =f.label :email,:class => "label-control"
+
+              = f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "email",:type => "email"
+              - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                %div
+                  Esperando confirmación de: #{resource.unconfirmed_email}
+
+            .form-group
+              %label.sr-only{:for => "password"} Contraseña
+              = f.label :contraseña, 'Contraseña nueva',:class => "label-control"
+              %i (en blanco si no quisiera cambiarla)
+              %br/
+              - if @minimum_password_length
+                %em
+                  (#{@minimum_password_length} caracteres como mínimo)
+              = f.password_field :password, autocomplete: "off",:class => "form-control",:placeholder => "contraseña"
+            .form-group
+              %label.sr-only{:for => "password_confirmation"} Confirmación de contraseña
+              = f.label :password_confirmation, 'Confirmación de contraseña',:class => "label-control"
+              %br/
+              = f.password_field :password_confirmation, autocomplete: "off", :placeholder => "repita la contraseña nueva", :class => "form-control"
+            .form-group
+              %label.sr-only{:for => "current_password"} Contraseña actual
+              = f.label :current_password, 'Contraseña actual',:class => "label-control"
+
+              %i (escriba su contraseña vigente para confirmar los cambios)
+              %br/
+              = f.password_field :current_password, autocomplete: "off",:class => "form-control"
+
+            .actions
+              %button.btn.btn-primary.btn-block{:type => "submit"} Actualizar
+        .panel-footer
+          %p
+            ¿Descontento? #{button_to "Cerrar la cuenta", registration_path(resource_name), data: { confirm: "Desea proseguir con el cierre de la cuenta?" }, method: :delete}
+          = link_to "Volver", :back

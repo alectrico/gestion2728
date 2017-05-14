@@ -1,0 +1,2 @@
+rsync * -avr ../one_commit_gestion2728 /media/alex/PENDRIVE
+

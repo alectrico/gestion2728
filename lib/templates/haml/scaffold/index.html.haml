@@ -1,0 +1,23 @@
+%h2 Lista de <%= plural_name.humanize %>
+<% @namespace_ = capture do %><% if not class_name.empty? %><%=class_name.to_s.deconstantize.downcase %>_<%end%><%end%>
+
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        <%@attributes.each do |a| %>%th <%=a.name.humanize %>
+        <%end%>%th
+        %th
+        %th
+
+    %tbody
+      -@<%=@namespace_%><%=plural_name %>.each do |<%=plural_name.singularize%>|
+        %tr   
+          <%@attributes.each do |a| %>%td=<%=plural_name.singularize %>.<%=a.name %>
+          <%end%>%td= link_to "Ver", <%=plural_name.singularize%>
+          %td= link_to "Editar", edit_<%= @namespace_ %><%=plural_name.singularize%>_path(<%=plural_name.singularize%>)
+          %td= link_to "Eliminar",<%=plural_name.singularize%>, :method => :delete, :data => { :confirm => "¿Está seguro?" }
+
+%br
+
+= link_to "Agregar", new_<%=@namespace_%><%=plural_name.singularize%>_path

@@ -1,0 +1,6 @@
+- evidencia.prepare
+= link_to(image_tag(evidencia.imagen.thumb('130x130#').url),evidencia) if evidencia.imagen
+%p = evidencia.auditoria_id
+%p = evidencia.auditoria.registro.razon_social if evidencia.auditoria
+%p = evidencia.auditoria.usuario.nombre if evidencia.auditoria
+

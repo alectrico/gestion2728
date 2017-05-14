@@ -1,0 +1,7 @@
+#encoding: ISO-8859-1
+= link_to gravatar_for(current_user,'15px'),user_url(current_user), "rel" => "external"
+-#= link_to (user_url(current_user), = gravatar_for (current_user))
+-#%big=current_user.name
+-#%p= link_to "Ver mi perfil", current_user, "rel" => "external"
+-#pan
+  =pluralize(current_user.microposts.count, "comentarios")

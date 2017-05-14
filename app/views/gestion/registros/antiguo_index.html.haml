@@ -1,0 +1,47 @@
+%h2 Lista de Registros
+
+
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        -#
+          %th Region
+          %th Rut
+          %th Dv
+        %th Razon social
+        %th Nombre fantasia
+        -#
+          %th Direccion
+          %th Comuna
+          %th Fono
+          %th Comportamiento
+          %th Email
+          %th Email secundario
+        %th
+        %th
+        %th
+
+    %tbody
+      -@gestion_registros.each do |registro|
+        %tr   
+          -#
+            %td=registro.region
+            %td=registro.rut
+            %td=registro.dv
+          %td=registro.razon_social
+          %td=registro.nombre_fantasia
+          -#
+            %td=registro.direccion
+            %td=registro.comuna
+            %td=registro.fono
+            %td=registro.comportamiento
+            %td=registro.email
+            %td=registro.email_secundario
+          %td= link_to "Ver", registro
+          %td= link_to "Editar", edit_gestion_registro_path(registro)
+          %td= link_to "Eliminar",registro, :method => :delete, :data => { :confirm => "¿Está segura?" }
+
+%br
+
+= link_to "Agregar", new_gestion_registro_path

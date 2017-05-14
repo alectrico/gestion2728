@@ -1,0 +1,18 @@
+#cd ~
+#   rm one_commit_gestion2728 -rf
+#mkdir one_commit_gestion2728
+cd ~/gestion_site
+rsync * -avr ../one_commit_gestion2728 --exclude-from lista_one_commit_gestion2728 --delete
+#du ../one_commit_gestion2728 -s --human-readable
+cd ../one_commit_gestion2728
+#git init
+git add .
+git commit -m "Algo mas"
+#git remote add origin https://git.heroku.com/gestion2728.git 
+#heroku repo:reset --app gestion2728
+#git push origin master 
+make blue
+cd ~/gestion_site
+
+
+

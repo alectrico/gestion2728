@@ -1,0 +1,21 @@
+= form_for @gestion_registro do |f|
+  - if @gestion_registro.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gestion_registro.errors.count, "error")} impiden que se pueda guardar este registro:"
+      %ul
+        - @gestion_registro.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.text_field_con_label :presentacion
+  = f.text_field_con_label :region
+  = f.text_field_con_label :rut
+  = f.text_field_con_label :dv
+  = f.text_field_con_label :razon_social
+  = f.text_field_con_label :nombre_fantasia
+  = f.text_field_con_label :direccion
+  = f.text_field_con_label :comuna
+  = f.text_field_con_label :comportamiento
+  = f.text_field_con_label :email
+  = f.text_field_con_label :email_secundario
+  .actions
+    = f.submit 'Guardar'

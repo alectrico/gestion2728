@@ -1,0 +1,10 @@
+-content_for :jumbo_contenido do
+  %h1 Editando Tipo de Auditoría
+
+
+  = render 'form'
+
+  = link_to 'Ver', @gestion_tipo_auditoria
+  \|
+  = link_to 'Lista', gestion_tipo_auditorias_path
+

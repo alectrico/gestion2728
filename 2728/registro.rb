@@ -1,0 +1,1 @@
+../gestion/registro.rb

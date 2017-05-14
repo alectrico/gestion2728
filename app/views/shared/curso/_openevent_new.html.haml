@@ -1,0 +1,37 @@
+=form_for Openevent.new,:url => {:controller => "openevents",:action => "new", :method => :get} ,:remote => true do |f|
+  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+  = tag(:input, :type => "hidden", :name => "email", :value => current_user.email)
+
+  .form-group
+    .col-sm-6
+      = f.text_field :direccion,:class => "form-control",:placeholder => "Lugar a visitar"
+  .form-group
+    .col-sm-6
+      = f.text_field :descripcion,:class => "form-control",:placeholder => "Lo que necesita"
+  .form-group
+    .col-sm-6
+
+      = f.text_field :fono,:class => "form-control", :placeholder => "Su teléfono"
+  .form-group
+    .col-sm-6
+      = f.text_field :fecha ,:class => "form-control",:placeholder => "10/10/2016 10:00"
+    .col-sm-6
+      = f.submit "Click!",:class => "btn btn-lg"
+
+%script
+  $("#new_openevent").validate({
+  rules:{
+  "openevent[descripcion]": {maxlength:1050, required:true},
+  "openevent[direccion]": {maxlength:1050, required:true},
+  "openevent[fono]": {minlength: 9, maxlength:9, required:true, digits:true},
+  "openevent[fecha]": { required: true}
+
+
+  },
+  submitHandler: function(form){
+  console.log(validator.element('#openevent[fono]'));
+
+  //cation.reload();
+  //owLoadingScreen();
+  }});
+

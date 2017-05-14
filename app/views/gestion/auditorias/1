@@ -1,0 +1,88 @@
+.col-12.col-xs-12.col-sm-12.col-md-6.col-lg-4
+  .portfolio-item
+    = link_to('<span class="glyphicon glyphicon-check"></span> '.html_safe, gestion_auditoria_path(auditoria))
+    .portfolio-imagen
+      .progress
+        -value = 100*auditoria.evidencias.count/@max_criterios
+        .progress-bar{:role => "progressbar",'aria-valuemax' => '100', 'aria-valuemin' => '0','aria-valuenow' => '0', :style => "width: #{value}%"}=value.truncate.to_s + "%"
+    %hr
+      = auditoria.evidencias.count.to_s
+      evidencias subidas
+      de un universo de
+      = @max_criterios.truncate
+      criterios registrados
+
+      -if auditoria.tipo_auditoria
+        %hr
+          .portfolio-imagen
+            .progress
+              -criterios=auditoria.tipo_auditoria.criterios
+
+              -suma_c = criterios.each.inject(0){|memo, criterio| memo + criterio.evidencias.count>0 ? 1: 0}
+              -value2 = 100*suma_c/auditoria.tipo_auditoria.criterios.count 
+              .progress-bar{:role => "progressbar",'aria-valuemax' => '100', 'aria-valuemin' => '0','aria-valuenow' => '0', :style => "width: #{value2}%"}=value2.truncate.to_s + "%"
+        %hr
+          %table
+            %thead
+              %th
+              %th
+              %th
+
+            %tbody
+              -auditoria.tipo_auditoria.criterios.each do |c|
+                %tr
+                  %td= c.numeral 
+                  %td= c.evidencias.count
+                  %td
+                    %table
+                      %thead
+                        %th
+                      %tbody
+                        -c.evidencias.each do |e|
+                          = e.descripcion
+
+        %hr
+        = auditoria.evidencias.count.to_s
+        evidencias subidas
+        del un máximo de
+        = auditoria.tipo_auditoria.criterios.count
+        criterios exigidos por el tipo 
+        de auditoría usado:
+        %strong= link_to auditoria.tipo_auditoria.nombre, tipo_auditoria_path( auditoria.tipo_auditoria)
+        %br\
+        creado por:
+        %strong= link_to auditoria.tipo_auditoria.autor.nombre, gestion_usuario_path(auditoria.tipo_auditoria.autor) if auditoria.tipo_auditoria.autor_id
+    %hr
+    =render partial: 'shared/avatar', :locals => {:item => auditoria.usuario} if current_user.admin
+    .portfolio-info
+      %ul
+        %li.portfolio-project-name
+          = link_to(auditoria.registro.razon_social.truncate(20), gestion_registro_path(auditoria.registro.id)) 
+-#idden-md-down
+  %hr
+  .jumbotron
+    = link_to(image_tag(item.imagen.thumb('130x130#').url),item) if item.imagen
+  %hr
+    %p
+      %b Descripcion:
+      = item.descripcion
+
+-#.container
+  .row.row-offcanvas.row-offcanvas-left
+    .col-12.col-md-9
+      %p.float-right.hidden-md-up
+        -#%button.btn.btn-primary.btn-sm{"data-toggle" => "offcanvas", :type => "button"} Menú
+        = link_to 'Ver',  auditoria_path(auditoria.id),:class => 'btn btn-primary'
+
+      .jumbotron
+        %p= auditoria.id
+
+        -unless auditoria.usuario.nil?
+          %div
+            =image_tag(code_image_usuario_url(auditoria.usuario), :style => "max-width: 50%")
+
+          %p
+            = auditoria.usuario.nombre
+          %p
+            = auditoria.registro.razon_social
+

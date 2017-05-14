@@ -1,0 +1,10 @@
+
+-if item
+  .portfolio.item
+    = render partial: '/shared/badge_usuario', :locals => {:item => item}
+    %p.float-left
+    =link_to(image_tag(code_image_usuario_url(item), :height => '40px'), item) if item.bits
+    -#item.prepare
+    -#link_to(image_tag(item.imagen.thumb('30x30#').url),item) if item.imagen
+    %p= item.nombre.truncate(10)
+  %hr 

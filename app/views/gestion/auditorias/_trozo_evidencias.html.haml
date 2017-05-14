@@ -1,0 +1,9 @@
+-#@gestion_evidencia = @gestion_auditoria.evidencias.build
+
+-@gestion_evidencia = @gestion_auditoria.evidencias.build
+.row
+  -#%ul.microposts
+  .col-sm-6
+    .jumbotron
+      = render 'gestion/evidencias/form'
+  = render 'gestion/evidencias/feed_evidencias'

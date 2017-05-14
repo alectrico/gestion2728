@@ -1,0 +1,50 @@
+-content_for :before_assets do
+  -#= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"
+  = stylesheet_link_tag "B3220/main", media: 'all', 'data-turbolinks-track': 'reload'
+  = javascript_include_tag "jquery-2.1.3.js"
+  = stylesheet_link_tag 'gestion/offcanvas.css', media: 'all', 'data-turbolinks-track': 'reload' 
+  = javascript_include_tag 'gestion/offcanvas.js', 'data-turbolinks-track': 'reload'
+  = javascript_include_tag 'dropify/dropify.js'
+  = stylesheet_link_tag 'dropify.css'
+  = javascript_include_tag "jekyll/vendor/holder.min.js", 'data-turbolinks-track': 'reload'
+
+
+
+-content_for :main_menu do
+  =render '/layouts/main_menu'
+
+-content_for :menu_footer do
+  =render '/layouts/menu_footer'
+
+-content_for :notificaciones do
+  -#no hay, porque se usan al intrior del jumbo
+
+-if content_for(:jumbo_contenido)
+  .container
+    = render 'layouts/notifications'
+
+  -content_for :principal do
+    .row.row-offcanvas.row-offcanvas-right
+      .col-12.col-md-9
+        %p.float-right.hidden-md-up
+          %button.btn.btn-primary.btn-sm{"data-toggle" => "offcanvas", :type => "button"} Menú
+        .jumbotron
+          =yield :jumbo_contenido
+      #sidebar.col-6.col-md-3.sidebar-offcanvas
+        = render 'sidebar'
+
+
+-content_for :jekyll do
+  = render '/layouts/jekyll'
+
+-content_for :busqueda do
+  = render 'busqueda'
+
+
+-#content_for :has_many do
+  = render partial: 'gestion/evidencias/evidencia',collection: @gestion_evidencias
+
+  -#= render partial: 'presupuesto/fotos/foto',collection: @presupuesto_fotos
+
+
+= render template: '/layouts/application_gestion'

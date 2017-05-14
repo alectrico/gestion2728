@@ -1,0 +1,27 @@
+%h2 Lista de Usuarios
+
+
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Nombre
+        %th Email
+        %th Login
+        %th
+        %th
+        %th
+
+    %tbody
+      -@gestion_usuarios.each do |usuario|
+        %tr   
+          %td=usuario.nombre
+          %td=usuario.email
+          %td=usuario.login
+          %td= link_to "Ver", usuario
+          %td= link_to "Editar", edit_gestion_usuario_path(usuario)
+          %td= link_to "Eliminar",usuario, :method => :delete, :data => { :confirm => "¿Está seguro?" }
+
+%br
+
+= link_to "Agregar", new_gestion_usuario_path

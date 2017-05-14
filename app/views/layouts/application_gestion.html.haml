@@ -1,0 +1,56 @@
+!!!
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+/ <![endif]
+
+%html.no-js{ "xmlns:og" => "http://opengraphprotocol.org/schema/", "xmlns:fb" => "http://www.facebook.com/2008/fbml", "xmlns:website" => "http://ogp.me/ns/website", :lang => "es-CL", "itemscope itemtype" => "http://schema.org/WebPage", "xmlns" => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}
+  %head
+    %meta{:property => "layout", :content => 'application gestion'}
+    %meta{:charset => "utf-8"}
+    %meta{:name => "viewport", :content => 'width=device-width,initial-scale=1, shrink-to-fit=no'}
+    = csrf_meta_tags 
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload'
+
+    = javascript_include_tag "jquery/jquery-3.1.1.slim.min.js", 'data-turbolinks-track': 'reload'
+    #before_assets= yield :before_assets
+    = render '/layouts/google_analytic' if Rails.env != "development_gestion2728"
+
+
+  %body
+    #main_menu= yield :main_menu if content_for(:main_menu)
+    #principal= yield :principal if content_for(:principal)
+    #contenido= yield :contenido if content_for(:contenido)
+    #has_many= yield :has_many if content_for(:has_many)
+    #jekyll= yield :jekyll if content_for(:jekyll)
+  #busqueda
+  %script
+    = yield :busqueda if content_for(:busqueda)
+
+  %script
+    Holder.addTheme('gray', {
+    bg: '#777',
+    fg: 'rgba(255,255,255,.75)',
+    font: 'Helvetica',
+    fontweight: 'normal'
+    })
+    = yield :after_assets  if content_for(:after_assets)
+
+  %footer
+    -#.text-muted
+    -#%navbar.navbar.navbar-fixed-bottom
+    .container
+      #menu_footer= yield :menu_footer if content_for(:menu_footer)
+
+      -#%p.float-right
+        %a{:href => "#"} Subir
+      %p 2728 © Alexsoft
+      -#%p
+        No sabe de lo que estoy contando?
+        %a{:href => "../../"} Visite la página del INE
+        o lea nuestro instructivo más básico
+        = succeed "." do
+          = image_tag "#{Rails.configuration.domain['brand_logo']}", :width => "60", :height => "30"
+

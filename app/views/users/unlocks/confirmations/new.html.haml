@@ -1,0 +1,15 @@
+=stylesheet_link_tag 'gestion/signin.css', media: 'screen', 'data-turbolinks-track': 'reload'
+
+= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { :class => "form-signin",method: :post }) do |f|
+  = devise_error_messages!
+  %h2.form-signin-heading Enviar instrucciones de confirmación
+  %label.sr-only{:for => "email"} email
+  = f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "email",:type => "email"
+  %label.sr-only{:for => "password"} Contraseña
+  - if @minimum_password_length
+    %em
+      (#{@minimum_password_length} caracteres como mínimo)
+  = f.password_field :password, autocomplete: "off",:class => "form-control",:placeholder => "contraseña", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+  .actions
+    %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Renviar instrucciones de confirmación
+  = render "shared/devise_shared_links"

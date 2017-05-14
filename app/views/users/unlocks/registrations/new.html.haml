@@ -1,0 +1,22 @@
+=stylesheet_link_tag 'gestion/signin.css', media: 'screen', 'data-turbolinks-track': 'reload'
+
+.container
+= form_for(resource, as: resource_name,:html => {:class => "form-signin"}, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  %h2.form-signin-heading Registro
+
+  %label.sr-only{:for => "email"} email
+  = f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "email",:type => "email"
+  %label.sr-only{:for => "password"} Contraseña
+  - if @minimum_password_length
+    %em
+      (#{@minimum_password_length} caracteres como mínimo)
+  = f.password_field :password, autocomplete: "off",:class => "form-control",:placeholder => "contraseña"
+  %label.sr-only{:for => "password_confirmation"} Confirmación de contraseña
+  = f.label :password_confirmation, 'Confirmación de contraseña',  :class => "label-control"
+  %br/
+  = f.password_field :password_confirmation, autocomplete: "off", :placeholder => "repita la contraseña", :class => "form-control"
+  .actions
+    %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Registrar
+
+  = render "devise/shared/links"

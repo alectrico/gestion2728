@@ -1,0 +1,78 @@
+-content_for :jumbo_contenido do
+  %p#notice= notice
+  %div
+    =image_tag(code_image_evidencia_url(@gestion_evidencia), :style => "max-width: 50%")
+
+
+
+  -#
+    %p
+      %b Auditoria_id:
+      = @gestion_evidencia.auditoria_id
+
+
+    %p
+      %b Criterio_id:
+      = @gestion_evidencia.criterio_id
+
+
+    %p
+      %b Usuario_id:
+      = @gestion_evidencia.usuario_id
+
+
+    %p
+      %b Image_uid:
+      = @gestion_evidencia.image_uid
+
+
+    %p
+      %b Image_name:
+      = @gestion_evidencia.image_name
+
+
+    %p
+      %b Tipo_contenido:
+      = @gestion_evidencia.tipo_contenido
+
+
+    %p
+      %b Nombre_archivo:
+      = @gestion_evidencia.nombre_archivo
+
+
+    %p
+      %b Bits:
+      = @gestion_evidencia.bits
+
+
+    %p
+      %b Thumbnail:
+      = @gestion_evidencia.thumbnail
+
+
+    %p
+      %b Tempfile:
+      = @gestion_evidencia.tempfile
+
+
+    %p
+      %b Descripcion:
+      = @gestion_evidencia.descripcion
+
+
+    %p
+      %b Lugar:
+      = @gestion_evidencia.lugar
+
+
+    %p
+      %b Estado:
+      = @gestion_evidencia.estado
+
+
+
+  = link_to "Editar", edit_gestion_evidencia_path(@gestion_evidencia)
+  \|
+  = link_to 'Lista', gestion_evidencias_path
+

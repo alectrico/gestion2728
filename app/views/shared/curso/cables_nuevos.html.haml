@@ -1,0 +1,30 @@
+#encoding: ISO-8859-1
+-#%div{:style => "padding: 2px"}
+
+%div{:style =>  "width:30%;float:left; padding: 10px; display: inline-flex"}
+  =link_to(image_tag('logo_alectrico.png', :style => 'width:150%;height:auto;float:left;margin:1%'), "")
+
+%div{:style =>  "width:30%;float:left; padding: 10px; display: inline-flex"}
+  =link_to(image_tag('1503.jpg', :style => 'width:44%;height:auto;float:left;margin:1%'), "")
+
+-#%div{:style =>  "width:30%;float:left; padding: 10px; display: inline-flex"}
+  =link_to(image_tag('1630.jpg', :style => 'width:138%;height:auto;float:left;margin:1%'), "")
+
+
+%div{:style => "color: #686868;margin:5px; font-size: 1em; padding-bottom:6px"}A
+  %p 
+    Atentamente;
+
+  %p
+    -unless presupuesto && presupuesto.admin.nil?
+      =presupuesto.admin.name
+    -else
+      Alexander Espinosa Hernández
+  %p
+    Instalador Eléctrico Autorizado Clase D
+  %p
+    Reg. SEC: 14.579.554-0
+  %p
+    alectrico
+
+

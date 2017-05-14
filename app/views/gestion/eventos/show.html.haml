@@ -1,0 +1,43 @@
+-content_for (:jumbo_contenido) do
+  %p
+    %b Titulo:
+    = @gestion_evento.titulo
+
+
+  %p
+    %b Descripcion:
+    = @gestion_evento.descripcion
+
+
+  %p
+    %b Fecha:
+    = @gestion_evento.fecha
+
+
+  -#%p
+    %b Email:
+    = @gestion_evento.email
+
+
+  %p
+    %b Direccion:
+    = @gestion_evento.direccion
+
+
+  %p
+    %b Coordenadas:
+    = @gestion_evento.coordenadas
+
+
+  %p
+    %b Type:
+    = @gestion_evento.type
+
+
+
+
+
+  = link_to "Editar", edit_gestion_evento_path(@gestion_evento)
+  \|
+  = link_to 'Lista', gestion_eventos_path
+

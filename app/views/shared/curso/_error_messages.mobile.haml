@@ -1,0 +1,11 @@
+#encoding: ISO-8859-1
+-if object.errors.any?
+  #error_explanation
+    .alert.alert-error
+      -#=content_tag(:div, "Errores:  #{object.errors.count}",class: "alert alert-#{:error}")
+      Errores: #{object.errors.count}
+    %ul
+      -object.errors.full_messages.each do |msg|
+        %li 
+          * #{msg}
+ 

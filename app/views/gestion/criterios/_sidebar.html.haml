@@ -1,0 +1,10 @@
+-if params[:id] 
+  .list-group-item
+    = link_to 'Pdf',  download_pdf_criterio_path(@gestion_criterio.id)
+  .list-group-item
+    = link_to 'Ver',      gestion_criterio_path(@gestion_criterio.id)
+  .list-group-item
+    = link_to 'Editar',       edit_criterio_path(@gestion_criterio.id)
+  .list-group-item
+    = link_to 'Eliminar', gestion_criterio_path(@gestion_criterio.id), method: :delete, data: { confirm: '¿Está seguro?' }
+

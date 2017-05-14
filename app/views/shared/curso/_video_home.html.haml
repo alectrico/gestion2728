@@ -1,0 +1,85 @@
+#encoding: ISO-8859-1
+-#= edicion.titulo
+-#nder js: alert("jljlk")
+-#edicion = Edicione.find_by_titulo('Acceso al Medio')
+-#=edicion.titulo
+-#.btn{:onclick => 'changeText2()', :href => "#"} Ctext
+
+
+:javascript
+= javascript_tag 'src="jwplayer.js"'
+= javascript_tag 'src="video.js"'
+-#javascript_tag 'src="swobject.js"'
+- user_agent = request.env['HTTP_USER_AGENT'].downcase
+
+
+-if edicion.url =~ /www.youtube.com/
+  -#%iframe{:width => "420", :height => "315" , :src => edicion.url}#este si funciona pero no permite conocer time
+  -#%video{:id=>"#{edicion.id}"}
+    %source{:src => edicion.url, :type => "application/x-shockwave-flash"}
+  <script type="text/javascript" src = "/swfobject.js"></script>
+  <div id="ytapiplayer"></div>
+  <script type="text/javascript">    var params = { allowScriptAccess: "always" };     var atts = { id: "myytplayer" };       swfobject.embedSWF("#{edicion.url}?enablejsapi=1&playerapiid=ytplayer", "ytapiplayer","640" , "480", "8", null,null, params,atts);   </script> 
+  -#%object{:height => "360",:width => "640"}
+    %param{:id => "#{edicion.id}"}
+    %param{:name => "movie", :value => edicion.url}
+    %param{:name => "allowScriptAccess", :value => "always"}
+    %embed{:allowScriptAccess => "always", :allowfullscreen => "true",:height => "360", :src => "#{edicion.url}?version=3", :type => "application/x-shockwave-flash",:width => "640"}
+
+  -#%iframe{:width => "420", :height => "315" , :src => edicion.url}
+-else
+  %video{:id=> "#{edicion.id}",:display => "modal",:preload => 'true', :controls => 'false', :width => '98%' }
+    -if user_agent.index('msie') then
+      -if user_agent.index('msie 9') then
+        %source{:src => edicion.url, :type => "video/mp4"} 
+      -else
+        -eslegacy = true
+    -elsif  user_agent.index('applewebkit') or user_agent.index('ipod') or user_agent.index('ipad') or user_agent.index('iphone')
+      -puts 'Safari'
+      %source{:src => edicion.url, :type=>"video/mp4"}
+        -#%:type => "video/mp4"}
+    -elsif user_agent.index('chrome') 
+      /hello Chrome and Firefox (and Opera?)
+      -puts 'Chrome'
+      %source{:src => edicion.url, :type => "video/webm"}
+    -elsif user_agent.index('mozilla/') or user_agent.index('opera') 
+      /hello Firefox and Opera
+      -puts 'Mozilla'
+      %source{:src => edicion.url, :type => "video/ogg"}
+    -else
+      /hello Legacy
+      -puts 'Legacy'
+      -eslegacy = true
+    -if eslegacy== true 
+      -#%p eslegacy
+      /comienza jwplayer
+      -#mediaplayer
+      -#= tag('div', :id => "#{edicion.id}")
+      %div{ :id => "#{edicion.id}"}
+      %script{:src => "jwplayer.js", :type => "text/javascript"}
+      :javascript 
+        jwplayer("#{edicion.id}").setup({
+                        flashplayer: "/player.swf",
+                        file: "#{edicion.url}",
+                        image: "/preview.jpg",
+                        preload: "none",
+                        modes: [
+                          { type: "html5" },
+                          { type: "flash", src: "/player.swf"},                  
+                          ]
+                        });
+    -#%timer   
+      -#.center
+      <b id= "C#{edicion.id}"> cargando  </b>..
+    -#%a.btn{"data-toggle" => "modal", :href => "#V#{edicion.id}",:onclick => "Pause(#{edicion.id})"} Cerrar
+    -#%a.btn{:onclick => "Mayor(#{edicion.id})"} <>
+    -#%a.btn{:onclick => "Menor(#{edicion.id})"} ><
+    -#%a.btn{:onclick => "FullScreen(#{edicion.id})"} Ver en Pantalla Completa
+    -#%p
+    -#%div{:id => "vdiv" }
+    -#%article data-start="4" data-end="38"
+    -#%iframe{:id => 'ifr',:src => "http://en.wikipedia.org/wiki/HTML5_video"}
+    -#%iframe{:id => 'vframe', :src => "http://instrumentacion.herokuapp.com"}
+
+
+

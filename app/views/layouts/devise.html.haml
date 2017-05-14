@@ -1,0 +1,21 @@
+!!!
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+/ <![endif]
+
+%html.no-js{ "xmlns:og" => "http://opengraphprotocol.org/schema/", "xmlns:fb" => "http://www.facebook.com/2008/fbml", "xmlns:website" => "http://ogp.me/ns/website", :lang => "es-CL", "itemscope itemtype" => "http://schema.org/WebPage", "xmlns" => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}
+  %head
+    %meta{:property => "layout", :content => 'application gestion'}
+    %meta{:charset => "utf-8"}
+    %meta{:name => "viewport", :content => 'width=device-width,initial-scale=1, shrink-to-fit=no'}
+    = csrf_meta_tags 
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'devise', 'data-turbolinks-track': 'reload'
+    = yield :before_assets
+
+  %body
+    %p.notice= notice
+    %p.alert= alert
+    = yield

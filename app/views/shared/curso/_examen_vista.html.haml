@@ -1,0 +1,19 @@
+%div
+  %a.btn.btn-large.btn-primary.comment-reply-btn{:href => examen_url(examen),:data => {toggle: "modal", target: "#u" }}
+    %i.glyphicon.glyphicon-share-alt
+      Comenzar
+      %span.glyphicon.glyphicon-pencil
+
+  .modal.fade{:id => "u",:tabindex => "-1",:role => "dialog",:back_drop => true}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+          %h3.modal-title Espere un momento
+        .modal-body
+          .modal-body-content
+            .ajax-loader
+              cargando...
+        .modal-footer
+          %button.btn{"data-dismiss" => "modal", :type => "button"} Cerrar
+

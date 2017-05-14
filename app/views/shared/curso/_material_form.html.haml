@@ -1,0 +1,41 @@
+#encoding: UTF-8
+= form_for(@llamada, :remote => true ) do |f|
+
+  = render 'shared/error_messages', object: f.object
+
+  .field
+    = f.hidden_field :presupuesto_id, :value  => @presupuesto.id
+
+  .field.span2
+    = f.label :fono
+    %br/
+    = f.text_field :fono, :value => @user.fono
+  .field.span1
+    = f.label :minutos
+    %br/
+    = f.number_field :minutos, :value => 1
+  .field.span1
+    = f.label :costo
+    %br/
+    = f.number_field :costo
+
+  .field
+    = f.text_area :contenido, placeholder: "Escriba un resumen de la conversación",:cols =>4, :rows => 4    
+  .field
+   
+    = f.select(:carrier_id, Carrier.all.map{|u| [u.id.to_s + " | " + u.nombre + " | " + number_to_currency( u.tarifa, :precision => 0),u.id]})
+
+  .field.span1
+    = f.label :bueno
+    %br/
+    = f.check_box :bueno
+  .field.span1
+    = f.label :neutro
+    %br/
+    = f.check_box :neutro
+  .field.span1
+    = f.label :malo
+    %br/
+    = f.check_box :malo
+  .actions.span3
+  = f.submit "Guardar", :class => "btn btn-large btn-primary"  

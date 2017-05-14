@@ -1,0 +1,39 @@
+-#.col-6.col-xs-6.col-sm-6.col-md-3.col-lg-2
+-if item_simple.id
+  -@gestion_criterio = item_simple
+  .col-6.col-xs-6.col-sm-6.col-md-4.col-lg-3{:id => item_simple.id}
+    .portfolio-item
+      = link_to('<span class="glyphicon glyphicon-list"></span> '.html_safe, gestion_criterio_path(item_simple))
+    .portfolio-imagen
+      -#.portfolio-imagen
+        =link_to(image_tag(code_image_criterio_url(item_simple), :style => "max-width: 100%"), item_simple) if item_simple.bits
+        -#item_simple.prepare      
+        -#link_to(image_tag(item_simple.imagen.thumb('130x130#').url,:width => "100%"),item_simple) if item_simple.bits
+      %span.badge.badge-success="directriz" if item_simple.directriz
+
+      .porfolio-info-fade
+        %ul
+          %li.portfolio-project-name= item_simple.texto
+          %li=item_simple.numeral
+          -id = item_simple.tipo_auditoria_id
+          %li
+            %b=id
+            -a=Gestion::TipoAuditoria.find_by(:id => id) 
+            =a.nombre if a
+        .ribbon-wrapper
+          .price-ribbon
+            -case item_simple.type
+              -when "Gestion::Politica"
+                %span.badge.badge-info="politica"
+              -when "Gestion::Procedimiento"
+                %span.badge.badge-danger="procedimiento"
+              -when "Gestion::Requisito"
+                %span.badge.badge-warning="requisito"
+              -when "Gestion::Criterio"
+                %span.badge.badge-info="criterio"
+            -#ink_to item_simple.criterio.numeral, gestion_criterio_path(item_simple.criterio.id)
+
+
+          -#.price-ribbon.ribbon-blue
+
+            =link_to item_simple.criterio.numeral, gestion_criterio_path(item_simple.criterio.id)

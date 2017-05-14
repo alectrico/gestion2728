@@ -1,0 +1,31 @@
+#encoding: ISO-8859-1
+-#provide(:titulo => "#{edicion.titulo}")
+-# if !request.env['HTTP_USER_AGENT'].downcase.index('iphone')
+  %p
+=link_to "#{edicion.titulo}","/ediciones/#{edicion.id}/videos", :rel => "external"
+
+-#%a{:href => edicion.url}= ""
+%p
+  -#%iframe{:width => "420", :height => "315" , :src => edicion.url}
+-#lse
+  %p
+  %a{:href => edicion.url}=edicion.titulo
+
+
+
+
+-#:javascript
+  $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+  $pos_blackberry = strrpos($ua,"blackberry");
+  $pos_webkit = strrpos($ua,"webkit");
+
+  if (!($pos_blackberry === false)) {
+  if (!($pos_webkit === false)){
+  $output = ";
+  }
+  }
+
+
+
+
+

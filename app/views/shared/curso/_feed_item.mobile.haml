@@ -1,0 +1,13 @@
+#encoding: ISO-8859-1
+%li{:id => feed_item.id}
+  = link_to gravatar_for(feed_item.user,'35'), feed_item.user, "rel" => "external"
+  = link_to feed_item.user.name, feed_item.user, "rel"=>"external"
+  -c = wrap(feed_item.content)
+  
+  -if current_user?(feed_item.user) 
+    = content_tag(:div," #{c}", class: "alert alert-#{:success}")
+  -else
+    = content_tag(:div, " #{c}", class: "alert alert-#{:error}")
+  Posteado hace #{time_ago_in_words(feed_item.created_at)} 
+  - if current_user?(feed_item.user)
+    =link_to "Eliminar",feed_item, method: :delete

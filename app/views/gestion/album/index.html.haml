@@ -1,0 +1,61 @@
+-##navbarHeader.collapse.bg-inverse
+  .container
+    .row
+      .col-sm-8.py-4
+        %h4.text-white Autora
+        %p.text-muted=Rails.configuration.domain['about']
+      .col-sm-4.py-4
+        -#%h4.text-white Contacto
+          %ul.list-unstyled
+            %li
+              %a.text-white{:href => "#"} Sígame en Twitter
+            %li
+              %a.text-white{:href => "#"} Opine en Facebook
+            %li
+              %a.text-white{:href => "#"} Envíeme un correo
+-#.navbar.navbar-inverse.bg-inverse
+  .container.d-flex.justify-content-between
+    %a.navbar-brand{:href => "#"}=Rails.configuration.domain['empresa']
+    %ul.navbar-nav.mr-auto
+      =render 'layouts/signin'
+
+    %button.navbar-toggler{"aria-controls" => "navbarHeader", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarHeader", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+-#ection.jumbotron.text-center
+%section.text-center
+  .container
+    %h1.jumbotron-heading=image_tag "#{Rails.configuration.domain['jumbotron_heading']}",:width => "80%"
+    -#ils.configuration.domain['empresa']
+    -unless current_user
+      %h2.lead.text-muted=Rails.configuration.domain['gancho'] 
+      %p
+        %a.btn.btn-primary{:href => new_user_registration_path} Regístrese 
+        -#%a.btn.btn-secondary{:href => "#"}=Rails.configuration.domain['secondary_call_to_action']
+
+-#.album.text-muted
+  .container
+    .row
+      .card
+        %p.float-right Corrija a sus empleados!
+       
+        = image_tag "#{Rails.configuration.domain['brand_card1']}",:style => "height: 25%; width: auto"
+
+      .card
+        %p.float-right No engañe a sus clientes! 
+        = image_tag "#{Rails.configuration.domain['brand_card2']}",:style => "height: 25%; width: auto"
+      .card
+        %p.float-right Asesórese con  Calidad ! 
+        = image_tag "#{Rails.configuration.domain['brand_card3']}",:style => "height: 25%; width: auto"
+
+
+-#%footer.text-muted
+  .container
+    -#%p.float-right
+      %a{:href => "#"} Subir
+    %p 2728 © Alexsoft
+    -#%p
+      No sabe de lo que estoy contando?
+      %a{:href => "../../"} Visite la página del INE
+      o lea nuestro instructivo más básico
+      = succeed "." do
+        = image_tag "#{Rails.configuration.domain['brand_logo']}", :width => "60", :height => "30"

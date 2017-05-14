@@ -1,0 +1,35 @@
+-#=stylesheet_link_tag 'gestion/signin.css', media: 'screen', 'data-turbolinks-track': 'reload'
+.container
+  .text-center
+    %h1 Inicio de Sesión
+  .row
+    .col-lg-offset-3.col-lg-6.col-md-offset-3.col-md-6.col-sm-offset-2.col-sm-8.col-xs-12
+      .panel.panel-default
+        .panel-body
+
+          =form_for( resource,:html => {:class => "form-signin"}, as: resource_name, url: session_path(resource_name)) do |f|
+            .form-group
+
+              %label.sr-only{:for => "email"} email
+              #inputEmail=f.email_field :email,:class => "form-control", :autofocus => true, :placeholder => "email", :required => "", :type => "email"
+            .form-group
+              %label.sr-only{:for => "password"} Contraseña
+              #inputPassword=f.password_field :password, :class => "form-control", :placeholder => "Contraseña", :required => "", :type => "password", :autocomplete => "off"
+            .form-group
+              .checkbox
+                %label.form-check-label
+                  =f.check_box :role,:value => "auditor",:type => "checkbox"
+
+                  Auditor 
+              - if devise_mapping.rememberable?
+                .checkbox
+                  %label.form-check-label
+                    =f.check_box :remember_me,:value => "remember-me",:type => "checkbox"
+                  
+                    Recordarme en este dispositivo
+            .actions
+              %button.btn.btn-primary.btn-block{:type => "submit"} Iniciar sesión
+        .panel-footer
+          = render "shared/devise_shared_links"
+
+

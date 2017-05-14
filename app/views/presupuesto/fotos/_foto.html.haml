@@ -1,0 +1,22 @@
+.container
+  .row.row-offcanvas.row-offcanvas-left
+    .col-12.col-md-9
+      %p.float-right.hidden-md-up
+        %button.btn.btn-primary.btn-sm{"data-toggle" => "offcanvas", :type => "button"} Menú
+      .jumbotron
+        %tr
+          = image_tag(foto.image.thumb('130x130#').url) if foto.image
+    #sidebar.col-6.col-md-3.sidebar-offcanvas
+      -if params[:id] 
+        .list-group-item
+          = link_to 'Pdf',  download_pdf_foto_path(foto)
+      .list-group-item
+        = link_to 'Ver',      foto
+      -if params[:id]
+        .list-group-item
+          = link_to 'Editar',       edit_foto_path(foto)
+      .list-group-item
+        = link_to 'Eliminar', foto, method: :delete, data: { confirm: '¿Está seguro?' }
+  %p
+    = foto.descripcion
+  %hr/

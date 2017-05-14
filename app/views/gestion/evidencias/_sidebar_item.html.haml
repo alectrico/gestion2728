@@ -1,0 +1,16 @@
+-if params[:id]
+  .list-group-item
+    = link_to 'Pdf',      download_pdf_evidencia_path(item)
+  .list-group-item
+    = link_to 'Ver',      item
+  .list-group-item
+    = link_to 'Editar',   edit_evidencia_path(item)
+  .list-group-item
+    = link_to 'Eliminar', item, method: :delete, data: { confirm: '¿Está seguro?' }
+  .list-group-item
+    -unless  item.auditoria
+      .col-10.col-md-10
+        = form_for item do |f|
+          = f.hidden_field :auditoria_id , :value => @gestion_auditoria.id, :class => "form-control"
+          = f.submit "Vincular"
+

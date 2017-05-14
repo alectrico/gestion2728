@@ -1,0 +1,10 @@
+<% @namespace = capture do %><% if not class_name.empty? %><%=class_name.to_s.deconstantize.downcase %><%end%><%end%>
+<% @var = capture do %>@<%=@namespace_%><%=plural_name.singularize%><%end%>
+<% @constante = capture do %><%=class_name %><%end%>
+<% @value = capture do %><%=@namespace_%><%=plural_name.singularize%><%end%>
+<% @vars = capture do %>@<%=@namespace_%><%=plural_name%><%end%>
+
+
+.row
+  = render partial: "#{@namespace}/#{@vars}/item",collection: @vars,:layout => 'jumbotron',:cached => true, :locals => {:item => @var}
+

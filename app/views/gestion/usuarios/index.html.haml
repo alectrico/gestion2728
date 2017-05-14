@@ -1,0 +1,3 @@
+.row
+  = render partial: 'gestion/usuarios/item',collection: @gestion_usuarios,:cached => true, :layout => 'jumbotron',:locals => {:item => @gestion_usuarios}
+

@@ -1,0 +1,8 @@
+-#%ul.microposts.col-sm-6
+-#%div{:id => "llamadas#{@feed_llamadas.first.presupuesto_id}"}
+-#%a{:href=>"tel:#{number_to_phone(@user.fono, :country_code => 56)}"}=number_to_phone(@user.fono, :country_code => 56)
+
+-#pan{:id => "evidencias#{@gestion_auditoria.id}"}
+= render partial: 'gestion/evidencias/item_simple',:id => "evidencias#{@gestion_auditoria.id}",collection: @gestion_evidencias,:layout => 'jumbotron',:locals => {:item_simple => @gestion_evidencia} if @gestion_evidencias.any?
+
+

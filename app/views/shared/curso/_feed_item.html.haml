@@ -1,0 +1,20 @@
+#encoding: ISO-8859-1
+
+%li{:id => feed_item.id}
+  -if !Rails.env.vbox?
+    = link_to gravatar_for(feed_item.user,'35'), user_url(feed_item.user)
+  = link_to feed_item.user.name, user_url(feed_item.user)
+  %span.badge=feed_item.contexto
+  -#= feed_item.titulo
+  -c = wrap(feed_item.content)
+
+.textarea
+  -if current_user?(feed_item.user) 
+    = content_tag(:div, "#{feed_item.titulo}")
+    = content_tag(:div," #{c}", class: "alert alert-#{:success}")
+  -else
+    = content_tag(:div, "#{feed_item.titulo}")
+    = content_tag(:div, " #{c}", class: "alert alert-#{:error}")
+  Posteado hace #{time_ago_in_words(feed_item.created_at)} 
+  - if current_user?(feed_item.user)
+    =link_to "Eliminar",feed_item, method: :delete

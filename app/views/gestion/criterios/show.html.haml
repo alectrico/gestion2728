@@ -1,0 +1,34 @@
+-content_for :jumbo_contenido do
+  %p#notice= notice
+
+
+  %p
+    %b Tipo:
+    -#=I18n.translate "type"
+    = @gestion_criterio.type
+
+
+  %p
+    %b Numeral:
+    = @gestion_criterio.numeral
+
+
+  %p
+    %b Texto:
+    = @gestion_criterio.texto
+
+
+  %p
+    %b Directriz:
+    = @gestion_criterio.directriz
+
+
+
+  = link_to "Editar", edit_gestion_criterio_path(@gestion_criterio)
+  \|
+  = link_to 'Lista', gestion_criterios_path
+
+
+
+
+

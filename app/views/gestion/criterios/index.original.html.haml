@@ -1,0 +1,31 @@
+%h2 Lista de Criterios
+
+
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Type
+        %th Numeral
+        %th Texto
+        %th Directriz
+        -#
+          %th
+          %th
+          %th
+
+    %tbody
+      -@gestion_criterios.each do |criterio|
+        %tr   
+          %td=criterio.type
+          %td=criterio.numeral
+          %td=criterio.texto
+          %td=criterio.directriz
+          -#
+            %td= link_to "Ver", criterio_path(criterio.id)
+            %td= link_to "Editar", edit_gestion_criterio_path(criterio)
+            %td= link_to "Eliminar",criterio_path(criterio.id), :method => :delete, :data => { :confirm => "¿Está seguro?" }
+
+%br
+
+= link_to "Agregar", new_gestion_criterio_path

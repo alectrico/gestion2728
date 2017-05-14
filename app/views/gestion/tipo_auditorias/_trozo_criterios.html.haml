@@ -1,0 +1,9 @@
+-@gestion_criterio = @gestion_tipo_auditoria.criterios.build
+-@gestion_criterio.tipo_auditoria_id = @gestion_tipo_auditoria.id
+.container
+  .row
+    .col-12
+      .jumbotron
+        =render 'gestion/criterios/form_ajax'
+    .col-12
+      = render 'gestion/criterios/feed_rows'

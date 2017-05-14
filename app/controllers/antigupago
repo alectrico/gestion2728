@@ -1,0 +1,36 @@
+#encode: ISO-8859-1
+class PagosController < ElectricoController
+#before_filter :signed_in_user
+#before_filter :admin_user
+
+def suscribe
+  render 'suscribe'
+end
+
+
+def cancel
+  #redirect_to '/user/destroy'
+  render 'cancel'
+end
+
+def success
+  render 'success'
+  # redirect_to '/users/new'
+  #render text: params[:auth]
+   
+  #auth = 'ArJyt6YTIGqWdphQ62RNB83tgMDt5YGOsXE.4sYoEX6LqxTnhHzgEHtFhzZ6aha25zgXmP2oqZ3mzLqUIob5hkQ'
+  #f params[:auth] = @auth then
+    #ender text: params
+    #redirect_to '/users/new'
+  #lse
+    #redirect_to '/signin' 
+  #:;:
+#:;:
+   
+end
+
+def agotada
+  render 'agotada'
+end
+
+end

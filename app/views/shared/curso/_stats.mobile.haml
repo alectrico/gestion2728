@@ -1,0 +1,11 @@
+#encoding: ISO-8859-1
+- @user ||=current_user
+.stats
+  %a{:href => following_user_url(@user), "rel" => "external"}
+    %strong#following.stat
+      = @user.followed_users.count
+    sigo a
+  %a{:href => followers_user_url(@user), "rel" => "external"}
+    %strong#followers.stat
+      = @user.followers.count
+    me siguen

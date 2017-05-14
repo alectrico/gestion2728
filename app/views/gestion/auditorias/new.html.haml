@@ -1,0 +1,5 @@
+
+-content_for :jumbo_contenido do
+  %h1 Agregando auditoría
+  = render 'form', gestion_auditoria:@gestion_auditoria
+  = link_to 'Lista',  gestion_auditorias_path

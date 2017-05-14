@@ -1,0 +1,81 @@
+
+%a{:id => "dl",:download => "Canvas.png", :href => "#"} 
+  %canvas{:id => "cnv", :width => "150", :height => "70",:data => circuito.id.to_s}
+
+:javascript
+
+  canvas = document.getElementById("cnv");
+  var ctx = canvas.getContext("2d");
+  //$('meta[name=imagen]').remove();
+
+
+  /* FILL CANVAS WITH IMAGE DATA */
+  function r(ctx, x, y, w, h, c) {
+    ctx.beginPath();
+    ctx.rect(x, y, w, h);
+    ctx.strokeStyle = c;
+    ctx.stroke();
+  }
+  r(ctx, 0, 0, 120, 70, "black");
+  r(ctx, 4, 4, 16, 16, "red");
+  r(ctx, 8, 8, 16, 16, "green");
+  r(ctx, 12, 12, 16, 16, "blue");
+
+
+  ctx.font = "16px serif";
+  ctx.textBaseline = "hanging";
+
+  function leyenda(ctx, x, y, w, h, c, nombre) {
+    ctx.beginPath();
+    ctx.rect(x, y, w, h);
+    ctx.strokeStyle = c;
+    ctx.stroke();
+    //ctx.fillText("#{circuito.corriente_servicio}", x, y);
+    ctx.fillText("#{circuito.nombre}", x+30, y+5);
+  }
+
+  leyenda(ctx, 35,25,20,20,"green","#{circuito.nombre}");
+
+
+  var id = "#{circuito.id}";
+  //v.circuitos.each;
+
+  //ctx.fillText("#{circuito.corriente_servicio}", 25, 25);
+
+
+  //ctx.fillText("#{circuito.costo}", 25,80);
+
+
+
+  /* REGISTER DOWNLOAD HANDLER */
+  /* Only convert the canvas to Data URL when the user clicks. 
+     This saves RAM and CPU ressources in case this feature is not required. */
+  function dlCanvas() {
+    var dt = canvas.toDataURL('image/png');
+    /* Change MIME type to trick the browser to downlaod the file instead of displaying it */
+    dt = dt.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
+    /* In addition to <a>'s "download" attribute, you can define HTTP-style headers */
+    dt = dt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=Canvas.png');
+
+    this.href = dt;
+  };
+
+
+  //var idt = canvas.toDataURL('image/png');
+  //idt = idt.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
+
+  //idt = idt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=Canvas.png');
+
+  //console.log(idt);
+
+  //var url = "#{Domain.get_name_http}" + "/" +  canvas.toDataURL('image/png');
+
+  //var url = "http://prueba.alectrico.com/facebook/login"
+
+  //console.log( url);
+
+  //$('head').append( '<meta property="og:image" content=' +  url + '">' );
+
+
+
+  document.getElementById("dl").addEventListener('click', dlCanvas, false);

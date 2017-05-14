@@ -1,0 +1,47 @@
+-content_for :jumbo_contenido do
+  %p#notice= notice
+  %h2=@gestion_registro.nombre_fantasia
+  %h4=@gestion_registro.razon_social
+  %br
+  %b RUT:
+  = @gestion_registro.rut.to_s + "-" + @gestion_registro.dv
+  %b Comportamiento:
+  = @gestion_registro.comportamiento
+  %br
+  =@gestion_registro.direccion
+  %br
+  = @gestion_registro.comuna + "|" + @gestion_registro.region
+  %br
+  %b Fono:
+  = @gestion_registro.fono
+  %br
+  %b Email_principal:
+  = @gestion_registro.email
+  %br
+  %b Email_secundario:
+  = @gestion_registro.email_secundario
+  %br
+  -if @gestion_registro.presentada?
+    .alert.alert-success{:role => "alert"}
+      %strong Bien!
+      Esta empresa ya tiene
+      = succeed "." do
+        %a.alert-link{:href => "#"} tu presentación
+
+  %br
+  -if @gestion_registro.en_auditoria?
+    .alert.alert-success{:role => "alert"}
+      %strong Bien!
+      Esta empresa ya está siendo 
+      = succeed "." do
+        %a.alert-link{:href => "#"} auditada
+
+
+
+  %br
+
+
+  = link_to "Editar", edit_gestion_registro_path(@gestion_registro)
+  \|
+  = link_to 'Lista', gestion_registros_path
+

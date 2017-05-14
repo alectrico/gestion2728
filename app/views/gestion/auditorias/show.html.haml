@@ -1,0 +1,42 @@
+-if current_user.admin
+  -content_for :jumbo_contenido do
+    %p#notice= notice
+    -if @usuario
+      %div
+        =image_tag(code_image_usuario_url(@usuario), :style => "max-width: 50%")
+
+
+    %p
+      %b Auditor:
+      =  @usuario.nombre if @usuario
+
+
+    %p
+      %b Registro:
+      = @registro.razon_social if @registro
+
+    %p
+      %b Tipo de Auditoria:
+      -if @gestion_auditoria.tipo_auditoria
+        = @gestion_auditoria.tipo_auditoria.nombre 
+        %br/
+        = @gestion_auditoria.tipo_auditoria.criterios.count.to_s
+        criterios a cumplir
+
+
+    = link_to "Editar", edit_gestion_auditoria_path(@gestion_auditoria)
+    \|
+    = link_to 'Lista', gestion_auditorias_path
+
+
+-content_for :has_many do
+  = render 'trozo_evidencias'
+    
+    
+    
+  
+  -#= render partial: 'gestion/evidencias/item',collection: @gestion_evidencias,:layout => 'jumbotron_offcanvas'
+  -#= render partial: 'gestion/evidencias/item',collection: @gestion_evidencias_huerfanas, :layout => 'jumbotron_huerfanas'
+
+
+

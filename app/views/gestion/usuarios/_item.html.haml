@@ -1,0 +1,27 @@
+.col-12.col-xs-12.col-sm-6.col-md-3.col-lg-2
+  .portfolio-item
+    = link_to('<span class="glyphicon glyphicon-user"></span> '.html_safe, gestion_usuario_path(item.id))
+    = render partial: '/shared/badge_usuario', :locals => {:item => item}
+    %hr
+      =item.evidencias.count.to_s
+      evidencias en total
+      %br
+      =item.auditorias.count.to_s
+      auditorias en total
+    %hr
+    .portfolio-imagen
+      = link_to(image_tag(code_image_usuario_url(item), :style => "max-width: 100%"), item) if item.bits
+
+    %hr
+    -#=render partial: 'shared/avatar', :locals => {:item => item}
+    .portfolio-info
+      =link_to(item.nombre, item) unless item.bits
+      %p= item.nombre
+      %p= wrap(item.email)
+    -#.ribbon-wrapper
+      .price-ribbon.ribbon-white
+        =item.evidencias.count.to_s
+-#= link_to(image_tag(code_image_usuario_url(item), :style => "max-width: 100%"), item) if item.bits
+-#- item.prepare
+-#= link_to(image_tag(item.imagen.thumb('130x130#').url),item) if item.imagen
+

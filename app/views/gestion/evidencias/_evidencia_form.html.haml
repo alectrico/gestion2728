@@ -1,0 +1,33 @@
+= form_for @gestion_evidencia,:url => {:controller => "evidencias", :action => "create"}, :remote => true, :html => {:class => "form-horizontal left"}  do |f|
+    - if @gestion_evidencia.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@gestion_evidencia.errors.count, "error")} impide(n) que se pueda guardar este registro de evidencia:"
+        %ul
+          - @gestion_evidencia.errors.full_messages.each do |msg|
+            %li= msg
+    .container
+      .jumbotron        
+        = f.hidden_field :usuario_id, :value => current_user.perfil_id
+        = f.hidden_field :auditoria_id, :value => @gestion_auditoria.id
+        .row
+          .col-xs-8.offset-sm-3.offset-xs-3
+            = f.select_con_label(:criterio_id, @gestion_criterios.map {|u| ["tipo:" + " | " + u.type + " | " + "numeral: " + u.numeral + " | " + u.texto   , u.id]}) if @gestion_criterios
+        .row
+          .col-sm-12
+            = f.text_area :descripcion, placeholder: "Escriba sus razones para indicar si es una conformidad no no", :style => "width:100%"
+        .row
+          .col-sm-12
+            = f.text_area :lugar, placeholder: "Indique el lugar donde ha encontrado la evidencia", :style => "width:100%"
+        .container
+          .row
+            .col-sm-6
+              = f.file_field :imagen_file, 'data-max-file-size' => '1M','data-allowed-file-extensions' => 'jpg'
+      = f.submit 'Guardar'
+
+%script
+  $(document).ready(function(){
+  $('dropify').dropify();
+  var drEvent = $('#gestion_evidencia_imagen_file').dropify();
+ 
+  });
+

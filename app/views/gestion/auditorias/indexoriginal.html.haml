@@ -1,0 +1,24 @@
+%h2 Lista de Auditoríaas
+
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Auditor
+        %th Registro
+        %th
+        %th
+        %th
+
+    %tbody
+      -@gestion_auditorias.each do |auditoria|
+        %tr   
+          %td=auditoria.usuario.nombre if auditoria.usuario
+          %td=auditoria.registro.razon_social if auditoria.registro
+          %td= link_to "Ver", auditoria
+          %td= link_to "Editar", edit_gestion_auditoria_path(auditoria)
+          %td= link_to "Eliminar",auditoria, :method => :delete, :data => { :confirm => "¿Está seguro?" }
+
+%br
+
+= link_to "Agregar", new_gestion_auditoria_path

@@ -1,0 +1,13 @@
+= form_for @gestion_tipo_auditoria do |f|
+  - if @gestion_tipo_auditoria.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gestion_tipo_auditoria.errors.count, "error")} prohibited this gestion_tipo_auditoria from being saved:"
+      %ul
+        - @gestion_tipo_auditoria.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :nombre
+    = f.text_field :nombre, :class => "form-control"
+  .actions
+    = f.submit 'Guardar'

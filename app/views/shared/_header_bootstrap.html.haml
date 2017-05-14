@@ -1,0 +1,22 @@
+%header.navbar.navbar-light.navbar-toggleable-md.bd-navbar
+  %nav.container
+    .d-flex.justify-content-between.hidden-lg-up
+      %a.navbar-brand{:href => "/"}
+        Bootstrap
+      %button.navbar-toggler{"aria-controls" => "bd-main-nav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#bd-main-nav", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+    #bd-main-nav.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.nav-item.active
+          %a.nav-item.nav-link{:href => "/", :onclick => "ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');"} Bootstrap
+        %li.nav-item
+          %a.nav-item.nav-link.active{:href => "/getting-started/introduction/", :onclick => "ga('send', 'event', 'Navbar', 'Community links', 'Docs');"} Documentation
+        %li.nav-item
+          %a.nav-item.nav-link{:href => "/examples/", :onclick => "ga('send', 'event', 'Navbar', 'Community links', 'Examples');"} Examples
+        %li.nav-item
+          %a.nav-item.nav-link{:href => "https://themes.getbootstrap.com", :onclick => "ga('send', 'event', 'Navbar', 'Community links', 'Themes');"} Themes
+        %li.nav-item
+          %a.nav-item.nav-link{:href => "https://expo.getbootstrap.com", :onclick => "ga('send', 'event', 'Navbar', 'Community links', 'Expo');"} Expo
+        %li.nav-item
+          %a.nav-item.nav-link{:href => "https://blog.getbootstrap.com", :onclick => "ga('send', 'event', 'Navbar', 'Community links', 'Blog');"} Blog
+

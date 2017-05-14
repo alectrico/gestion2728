@@ -1,0 +1,11 @@
+-if params[:id] 
+  .list-group-item
+    = link_to 'Pdf',  download_pdf_evidencia_path(@gestion_evidencia)
+.list-group-item
+  = link_to 'Ver',      @gestion_evidencia
+-if params[:id]
+  .list-group-item
+    = link_to 'Editar',       edit_evidencia_path(@gestion_evidencia)
+.list-group-item
+  = link_to 'Eliminar', @gestion_evidencia, method: :delete, data: { confirm: '¿Está seguro?' }
+

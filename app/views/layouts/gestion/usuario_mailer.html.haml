@@ -1,0 +1,13 @@
+#encoding: ISO-8859-1
+%div{:style => "overflow:auto; min-height:10%;border: solid 1px #dfdfdf; color: #686868; font: 13px Arial; margin:5%;width: 90%;font-family:Verdana"}
+  %div{:style => "padding:1 1px; background-color:#f5f5f5"}
+    -#%span{:style => "vertical-align: middle"}
+    =link_to(image_tag("brand/fondocuatricolorcon2728.png",:opacity => "0.4", :style=>"padding:0px;padding-top:0px;padding-left:0px;border-style:none; opacity: 0.4; filter: alpha(opacity=40);width:100%"), Rails.configuration.domain['name'])
+
+  =yield    
+ 
+  %div{:style => "float:left;width:100%; background-color: #f5f5f5;" }
+    %div{:style => "width:60%; padding: 1%;font-size:0.5em; margin-top:4%"}
+      =link_to(image_tag(Rails.configuration.domain['brand_logo'],:style=>"float:left;margin:1%; width:10%"),Rails.configuration.domain['name'])
+      %div="Experiencia normativa"
+

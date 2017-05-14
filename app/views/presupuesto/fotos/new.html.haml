@@ -1,0 +1,19 @@
+-content_for  :jumbo_contenido do
+
+  %h1 Agregando Presupuesto_foto
+  = form_for(@presupuesto_foto,:url => {:action => 'create'},:html => {:multipart => true}) do |form|
+
+    %p#notice= notice
+
+    - if @presupuesto_foto.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@presupuesto_foto.errors.count, "error")} prohibited this presupuesto_foto from being saved:"
+        %ul
+          - @presupuesto_foto.errors.full_messages.each do |msg|
+            %li= msg
+
+
+    = form.file_field :image_file
+    = form.submit "Guardar"
+
+  = link_to 'Volver', presupuesto_fotos_path

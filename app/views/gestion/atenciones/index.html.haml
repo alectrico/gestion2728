@@ -1,0 +1,26 @@
+%h2 Lista de Atenciones
+
+
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Estado
+        %th Ingeniero
+        %th Usuario
+        %th Ver
+
+    %tbody
+      -@gestion_atenciones.each do |atencion|
+        %tr   
+          %td=atencion.estado
+          %td=link_to atencion.ingeniero.nombre, usuario_path(atencion.ingeniero) if atencion.ingeniero
+          %td=link_to atencion.usuario.nombre, usuario_path(atencion.usuario) if atencion.usuario
+
+          %td=link_to "Ver", atencion
+          -#%td= link_to "Editar", edit_gestion_atencion_path(atencion)
+          -#%td= link_to "Eliminar",atencion, :method => :delete, :data => { :confirm => "¿Está seguro?" }
+
+%br
+
+= link_to "Agregar", new_gestion_atencion_path

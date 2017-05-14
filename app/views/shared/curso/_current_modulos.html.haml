@@ -1,0 +1,6 @@
+#encoding: ISO-8859-1
+#info
+  -if current_modulos.count > 0 
+    %h4 Módulos vigentes:
+    -current_modulos.each do |modulo| 
+      %h6 #{modulo.nombre} (#{modulo.id})

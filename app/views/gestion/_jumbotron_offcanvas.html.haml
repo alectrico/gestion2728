@@ -1,0 +1,15 @@
+.container
+  .row.row-offcanvas.row-offcanvas-left
+    .col-12.col-md-9
+      %p.float-left.hidden-md-up
+        %button.btn.btn-primary.btn-sm{"data-toggle" => "offcanvas", :type => "button"} Menú
+      .jumbotron
+        %tr
+          = content_for?(:contenido) ? yield(:contenido) : yield
+
+    #sidebar.col-6.col-md-3.sidebar-offcanvas
+      = render 'sidebar'
+
+  -#%p
+    = item.descripcion
+  %hr/

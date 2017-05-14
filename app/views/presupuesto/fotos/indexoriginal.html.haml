@@ -1,0 +1,49 @@
+%h2 Lista de Fotos
+
+
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Descripcion
+        -#
+          %th Tipo contenido
+          %th Nombre archivo
+          %th Bits
+          %th Thumbnail
+          %th Tempfile
+        %th Image uid
+        -#:_::
+          %th Image name
+          %th Fotolizable
+          %th Fotolizable type
+          %th Cv
+          %th Presupuesto
+        %th
+        -#%th
+        -#%th
+
+    %tbody
+      -@presupuesto_fotos.each do |foto|
+        %tr   
+          %td=foto.descripcion
+          -#
+            %td=foto.tipo_contenido
+            %td=foto.nombre_archivo
+            %td=foto.bits
+            %td=image_tag(foto.bits.thumb(300x300#).url)
+            %td=foto.tempfile
+          %td=image_tag(foto.image.thumb('130x130#').url) if foto.image
+          -#
+            %td=foto.image_name
+            %td=foto.fotolizable_id
+            %td=foto.fotolizable_type
+            %td=foto.cv_id
+            %td=foto.presupuesto_id
+          %td= link_to "Ver", foto
+          -#%td= link_to "Editar", edit_presupuesto_foto_path(foto)
+          -#%td= link_to "Eliminar",foto, :method => :delete, :data => { :confirm => "¿Está seguro?" }
+
+%br
+
+= link_to "Agregar", new_presupuesto_foto_path

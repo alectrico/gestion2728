@@ -1,0 +1,13 @@
+.container
+  .row.row-offcanvas.row-offcanvas-left
+    .col-12.col-md-9
+      %p.float-right.hidden-md-up
+        -#%button.btn.btn-primary.btn-sm{"data-toggle" => "offcanvas", :type => "button"} Menú
+        = link_to 'Ver',  registro_path(registro.id),:class => 'btn btn-primary'
+
+      .jumbotron
+        %tr
+          = registro.razon_social
+        %tr
+          = registro.nombre_fantasia
+

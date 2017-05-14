@@ -1,0 +1,11 @@
+-if params[:id] 
+  .list-group-item
+    = link_to 'Pdf',  download_pdf_foto_path(@presupuesto_foto)
+.list-group-item
+  = link_to 'Ver',      @presupuesto_foto
+-if params[:id]
+  .list-group-item
+    = link_to 'Editar',       edit_foto_path(@presupuesto_foto)
+.list-group-item
+  = link_to 'Eliminar', @presupuesto_foto, method: :delete, data: { confirm: '¿Está seguro?' }
+

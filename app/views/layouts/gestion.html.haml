@@ -1,0 +1,39 @@
+-#usad por todos los controladores de la aplicacion de gestion. envia contenido al layout principal en application_gestion. 
+-#no se usa en las acciones que no sean index, para ellos el controlador destina el layout gestion/uno
+-#layout gestion
+-content_for :before_assets do
+
+  -#//custom de multipurpuse, necesario para impotar alectrico_heroku
+  = stylesheet_link_tag "B3220/main", media: 'all', 'data-turbolinks-track': 'reload' 
+
+
+  = stylesheet_link_tag 'gestion/gestion.css',  media: 'all', 'data-turbolinks-track': 'reload' 
+  = javascript_include_tag "jekyll/vendor/holder.min.js", 'data-turbolinks-track': 'reload'
+
+  -#= stylesheet_link_tag 'main.css',             media: 'all', 'data-turbolinks-track': 'reload'
+
+-content_for :search do
+  = render '/layouts/search'
+
+-content_for :main_menu do
+  = render '/layouts/main_menu'
+
+-content_for :menu_footer do
+  = render '/layouts/menu_footer'
+
+-content_for :jekyll do 
+  = render '/layouts/jekyll'
+
+-content_for :contenido do
+  .container-fluid
+    .row
+      -#= render 'nav_izquierda'
+      %main.col-sm-9.offset-sm-3.col-md-10.offset-md-2.pt-3
+        = render 'layouts/notifications'
+        = render 'panel'
+        = yield
+      
+-content_for :busqueda do
+  = render  'busqueda'
+
+= render template: '/layouts/application_gestion'

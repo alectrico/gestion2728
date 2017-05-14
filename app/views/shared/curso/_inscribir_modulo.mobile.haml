@@ -1,0 +1,39 @@
+#encoding: ISO-8859-1
+.alert
+  -if current_modulos !=nil and current_modulos.count > 0
+   
+    -current_modulos.each do |modulo|
+      -@enrolado = Enrolamiento.select {|enrolamiento| enrolamiento.user_id == current_user.id and enrolamiento.modulo_id == modulo.id}
+      -if !@enrolado.empty?
+        %p Estoy enrolado en:
+        %ul
+        -@enrolado.each do |enrolado|      
+          %li=link_to "#{enrolado.modulo.nombre}", "/clases/##{enrolado.modulo.id}", "rel" => "external"
+      -else
+        - modulo.id
+        - current_user.id
+        -@enr = Enrolamiento.new
+        -@enr.user_id = current_user.id
+        -@enr.modulo_id = modulo.id
+        -#=button_tag(:type => 'button',:class => "btn btn-success",:onclick => "@enr.save") do
+          =content_tag(:strong, "Quiero enrolarme en #{modulo.nombre}")
+          -#-@enr.save
+          -#=render :template => 'static_page/clases'
+        -#.alert.alert-success
+         
+        = form_for(@enr) do |f|      
+          %div
+            %p El módulo #{modulo.nombre} se encuentra en su semana #{modulo.current_semana}.
+            =f.hidden_field :modulo_id, :disable => true, :value => modulo.id, :size => 8
+            = f.hidden_field :user_id, :value => current_user.id, :size => 8, :disable => true
+
+          = f.submit "¡Quiero enrolarme!", :class => "btn btn-success", :disable_with => "Enrolando..."
+
+:javascript
+  function Enrolar(modulo_id)
+  {
+    
+    alert("UD. ha sido enrolado en el módulo");
+  }
+  
+  

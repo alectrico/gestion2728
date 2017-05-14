@@ -1,0 +1,15 @@
+= form_for  @gestion_criterio do |f| 
+  - if @gestion_criterio.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gestion_criterio.errors.count, "error")} impide(n) que se pueda guardar este registro de criterio:"
+      %ul
+        - @gestion_criterio.errors.full_messages.each do |msg|
+          %li= msg
+
+  
+  = f.select_con_label(:type , {"Criterio" => "Gestion::Criterio","Politica" => "Gestion::Politica","Procedimiento" => "Gestion::Procedimiento","Requisito" => "Gestion::Requisito"})
+  = f.text_field_con_label :numeral
+  = f.text_field_con_label :texto
+  = f.check_box :directriz
+  .actions
+    = f.submit 'Guardar'

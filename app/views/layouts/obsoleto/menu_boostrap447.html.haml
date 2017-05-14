@@ -1,0 +1,25 @@
+  %nav.navbar.navbar-toggleable-md.fixed-top.navbar-inverse.bg-inverse
+    %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    %a.navbar-brand{:href => "#"}= params[:controller]
+    #navbarsExampleDefault.collapse.navbar-collapse
+      = render 'layouts/main_menu'
+      = render 'layouts/signin'
+  %p#notice.alert.alert-danger= notice
+
+  .container
+
+    .row.row-offcanvas.row-offcanvas-right
+      .col-12.col-md-9
+        %p.float-right.hidden-md-up
+          %button.btn.btn-primary.btn-sm{"data-toggle" => "offcanvas", :type => "button"} Menú
+        .jumbotron
+          =yield
+      #sidebar.col-6.col-md-3.sidebar-offcanvas
+        = render 'sidebar'
+        / /span
+    / /row
+    %hr/
+    %footer
+      %p © Alexsoft 2017
+

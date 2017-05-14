@@ -1,0 +1,25 @@
+#encoding: ISO-8859-1
+-#%div{:style => "padding: 2px"}
+
+%div{:style =>  "width:30%;float:left; padding: 5px; display: inline-flex"}
+  =link_to(image_tag(Rails.configuration.domain["brand_logo"], :style => 'width:100%;height:auto;float:left;margin:1%;border-style:none'), root_url)
+
+-#%div{:style =>  "width:30%;float:left; padding: 10px; display: inline-flex"}
+  =link_to(image_tag('1503.jpg', :style => 'width:44%;height:auto;float:left;margin:1%'), "")
+
+-#%div{:style =>  "width:30%;float:left; padding: 10px; display: inline-flex"}
+  =link_to(image_tag('1630.jpg', :style => 'width:138%;height:auto;float:left;margin:1%'), "")
+
+%div{:style => "width:90%;color: #686868;margin:5px; font-size: 1em; padding-bottom:6px"}
+  %h2=Rails.configuration.domain['autor_nombre']
+  %table
+    %tr
+      %td{:rowspan => "2"}=Rails.configuration.domain['autor_titulo']
+    %tr
+      %td{:rowspan => "2"}=Rails.configuration.domain['autor_universidad']
+
+  %p=Rails.configuration.domain['autor_titulo']
+  %p=Rails.configuration.domain['default_from']
+
+
+

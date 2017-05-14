@@ -1,0 +1,102 @@
+#encoding: ISO-8859-1
+<html>
+  <head>
+    <title>Modulo %{currentModulo} Quiz %{currentQuiz.nombre}</title>
+    <style type="text/css" media="all">
+    body { font-family: Times, serif; }
+    .header { text-align: right; font-weight: bold; padding-right: 30%; line-height: 300%; }
+    h1 { text-align: center; }
+    ol.questions { list-style-type: number; }
+    li.question { page-break-inside: avoid; border-bottom: 1px solid grey; padding-bottom: 2ex; }
+    li.multiplechoice  ol.answers { list-style-type: lower-alpha; }
+    li.multiplechoice  ol.answers li { padding-bottom: 0.5ex; }
+    li.selectmultiple  ol.answers { vertical-align: center; list-style-type: none; list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUAQMAAAC3R49OAAAABlBMVEUAAAD///+l2Z/dAAAAEklEQVQImWNgAIL6/w+ogoEAAKI4Kp2NVIeDAAAAAElFTkSuQmCC');  }
+    li.truefalse ol.answers { list-style-type: none; }
+    li.truefalse ol.answers li { width: 15%; display: inline-block; }
+    .instructions { clear: both; border: 1px solid black; align: center; padding: 2ex; margin: 2ex; }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div id="name">Nombre:</div>
+      <div id="sid">Identificación:</div>
+    </div>
+    <h1>Módulo %currentModulo.nombre} Quiz: %{currentQuiz.nombre}</h1>
+    <div class="Instrucciones">
+      <ul>
+        <li>Instrucciones </li>
+        <li>Límite de tiempo es de %{currentQuiz.limite_tiempo}.</li>
+        <li>%{currentQuiz}.maxPreguntas} preguntas de selección múltiple, puntaje asignado por pregunta,
+          %{currentQuiz}.maxPuntaje} puntos en total.  Los puntos por pregunta reflejan el tiempo aproximado que debe tomar el responderla, alrededor de 1 punto por minuto.</li>
+        <li>En el caso de preguntas del tipo "seleccione lo que sea verdadero"
+se conceden N puntos.
+          Ud. ganará 1/N de los puntos cada vez que seleccione una alternativa correcta pero perderá 1/N de los puntos cuando deje una alternativa correcta sin seleccionar. Esto es, se ponderará de la misma forma si la selección es una respuesta correcta o no.</li> 
+      </ul>
+      <b>Buena Suerte!</b>
+    </div>
+    <!-- Seed: 32754673246558770736237145048783996361 -->
+<ol class="questions">
+  <li id="question-0" class="question truefalse ">
+    <div class="text">
+      <p>
+[1 punto] True or False: true      </p>
+    </div>
+    <ol class="answers">
+      <li>True</li>
+      <li>False</li>
+    </ol>
+  </li>
+  <li id="question-1" class="question truefalse ">
+    <div class="text">
+      <p>
+[1 punto] True or False: false      </p>
+    </div>
+    <ol class="answers">
+      <li>True</li>
+      <li>False</li>
+    </ol>
+  </li>
+  <li id="question-2" class="question multiplechoice ">
+    <div class="text">
+      <p>
+[3 puntos] ¿Cuál es la función principal de un bus de campo?      </p>
+    </div>
+    <ol class="answers">
+      <li>Transmitir información</li>
+      <li>Proteger el equipamiento</li>
+      <li>Controlar la planta</li>
+    </ol>
+  </li>
+  <li id="question-3" class="question multiplechoice ">
+    <div class="text">
+      <p>
+[1 puntos] Qué hace la siguiente orden
+<pre>
+  ping 192.168.1.254
+</pre>
+      </p>
+    </div>
+    <ol class="answers">
+      <li>
+Asigna el número de ip 192.168.1.254     </li>
+      <li>
+Verifica la conexión a 192.168.1.254      </li>
+    </ol>
+  </li>
+  <li id="question-4" class="question selectmultiple multiple">
+    <div class="text">
+      <p>
+[1 punto] Seleccione lo que sea verdadero: Cuáles son buses de campo?      </p>
+    </div>
+    <ol class="answers">
+      <li>Foundation Fieldbus</li>
+      <li>Hart</li>
+      <li>GPIB</li>
+      <li>TCP/IP</li>
+      <li>Lazo de corriente</li>
+    </ol>
+  </li>
+</ol>
+
+  </body>
+</html>

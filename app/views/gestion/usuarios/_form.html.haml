@@ -1,0 +1,30 @@
+= form_for @gestion_usuario do |f|
+  - if @gestion_usuario.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gestion_usuario.errors.count, "error")} impide(n) que se pueda guardar este registro de usuario:"
+      %ul
+        - @gestion_usuario.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.select_con_label(:user_id, @users.map {|u| ["id: " + u.id.to_s + " | " +  " | " + u.email  , u.id]})
+
+  = f.text_field_con_label :nombre
+  = f.text_field_con_label :email
+  = f.label :activo
+  = f.check_box :activo
+  = f.select_con_label(:login , {"auditor" => :auditor,"ingeniero" => :ingeniero,"profesor" => :profesor, "No Permitido!" => :nologin})
+
+  .container
+    .row
+      .col-sm-12
+        = f.file_field :imagen_file, 'data-max-file-size' => '1M','data-allowed-file-extensions' => 'jpg'
+  = f.submit 'Guardar'
+
+
+%script
+  $(document).ready(function(){
+  $('dropify').dropify();
+  var drEvent = $('#gestion_usuario_imagen_file').dropify();
+
+  });
+

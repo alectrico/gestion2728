@@ -1,0 +1,7 @@
+#encoding: ISO-8859-1
+%article{"data-start" => flap.start, "data-end" => flap.end}
+  %header
+    %h3= flap.url
+    %p
+      %a{:href => flap.url} #{flap.url}
+  %iframe{:class=>'iframe2', :src=> flap.url}

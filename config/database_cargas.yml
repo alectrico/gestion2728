@@ -1,0 +1,32 @@
+alectrico:  #Corresponde a Rails.env=alectrico. sierve para elegir lo que sigue
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  pool: 10
+  database: alectrico_development #Se debe elegir una segunda base de datos para el ambiente alectrico que sea diferente a la base de que se especifica en database.yml para el mismo ambiente (Rails.env=alectrico)
+  #database: alectrico         #Se puede elegir la misma base de datos alectrico que sea igual a la base de que se especifica en database.yml para el mismo ambiente (Rails.env=alectrico).
+
+  username: mooc_user
+  password: '1'
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  pool: 10
+  database: test
+  username: mooc_user
+  password: '1'
+
+electrico_heroku:
+  adapter: postgresql
+  encoding: utf8
+  url:  <%= ENV["DATABASE_CARGAS_URL"] %>
+  pool: <%= ENV["DB_POOL"] || 5 %>
+
+gestion2728_heroku:
+  adapter: postgresql
+  encoding: utf8
+  url:  <%= ENV["DATABASE_CARGAS_URL"] %>
+  pool: <%= ENV["DB_POOL"] || 5 %>
+

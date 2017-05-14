@@ -1,0 +1,90 @@
+!!!
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+/ <![endif]
+
+%html.no-js{ "xmlns:og" => "http://opengraphprotocol.org/schema/", "xmlns:fb" => "http://www.facebook.com/2008/fbml", "xmlns:website" => "http://ogp.me/ns/website", :lang => "es-CL", "itemscope itemtype" => "http://schema.org/WebPage", "xmlns" => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}
+
+  %head
+    -#= render '/layouts/monarch'
+    -if current_presupuesto and current_presupuesto.foto_id
+      %meta{:property => "og:image"      , :content => code_image_foto_url(current_presupuesto.foto_id),:name => "imagen"}
+    -else
+      -#%meta{:property => "og:image"      , :content => code_image_foto_url(499)}
+
+    -#%meta{:property => "og:image"      , :content => "http://prueba.alectrico.com/facebook/login/#butterfly"}
+    -#%meta{:property => "og:image:type" , :content => "image/jpeg"}
+    %meta{:property => "og:image:width", :content => "400"}
+    %meta{:property => "og:image:height" , :content => "300"}
+    %meta{:property => "fb:app_id"     , :content => Domain.get_fb_app_id}
+    %meta{:property => "og:site_name"  , :content => "Aléctrico" }
+    -if current_presupuesto
+      %meta{:property => "og:url"        , :content =>  proyecto_url(current_presupuesto)}
+
+    -else
+      %meta{:property => "og:url"        , :content =>  facebook_login_url }
+    %meta{:property => "og:type"       , :content => "website"}
+    %meta{:property => "og:title"      , :content => "Circuitos para todos"}
+    %meta{:property => "og:description", :content => "Enfrentar una reparación elécrica es un tema delicado. En Aléctrico hacemos todo en forma profesional preservando la seguridad de su vivienda y la salud de su familia. Go safer!"}
+    %meta{:itemprop => "name"          , :content => "Proyectos"}
+    %meta{:itemprop => "url"           , :content => "http://www.alectrico.com/proyectos"}
+
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    -#%title Alectrico - Eléctrico Autorizado Clase D
+    %meta{:content => "Instalador Eléctrico Autorizado: pre-certificación de instalaciones eléctricas, TE1, aumento de capacidad, sin luz, tengo corte, chilectra, sec", :name => "description"}/
+    %meta{:content => "width=device-width", :name => "viewport"}/
+    -#%meta{:name => "webmoney.attestation.label",:content => "webmoney attestation label#3FA3F1E8-01B9-42E0-AEF7-68C310AE0242"}     
+    %meta{:name => "layout", :content => "application, con _header y _footer alectrico"}
+
+    %title= full_title(yield(:title))
+
+    -#rewquirido por el template de boostrap
+    =stylesheet_link_tag "bootstrap"
+
+    -#usado por el template de bootstrap 3 multipurpose
+    =stylesheet_link_tag "icomoon-social.css"
+    =stylesheet_link_tag "//fonts.googleapis.com/css?family=Open+Sans:400,700,600,800" #me ha dejado la pagina bloqueda al igual que cualquier otro llamdo a   google apis acom ajas.googleapis
+    
+
+    -#css cutomizado del mpurpose usa LESSS para cambiar de color
+    =stylesheet_link_tag "main.css"
+
+    -#css cutomizados del primer tutorila de ruby on rails
+    =stylesheet_link_tag "hart/hart_custom.css"
+
+    -#soporte para el datetimepicker
+    =stylesheet_link_tag "bootstrap-datetimepicker.css"
+
+
+    -#usado en el template de multipurpose que se uso como base
+    =javascript_include_tag "modernizr-2.6.2-respond-1.1.0.min.js"
+    =javascript_include_tag '//code.jquery.com/jquery-1.10.2.js'
+    =javascript_include_tag '//code.jquery.com/ui/1.10.4/jquery-ui.js'
+
+    -#ujs-< unobtrusive java script (ajaxm para agregar interactivididad)
+    =javascript_include_tag 'jquery.js'
+    =javascript_include_tag 'jquery_ujs.js'
+
+    -#corriege errorr de addfileds al pasra a bootstrap3
+    =javascript_include_tag 'addfields.js'
+
+    -#usado para usar el control de datetimepicker
+    =javascript_include_tag 'moment.js'
+    =javascript_include_tag "moment/es.js"
+    =javascript_include_tag 'bootstrap-datetimepicker.js'
+
+    -#=render '/layouts/facebook_tracking'
+    -#= render '/layouts/google' #fotos de googe plus
+    = render '/layouts/google_Analytic_alectrico' if Rails.env.electrico_heroku? or Rails.env.alectrico_heroku?
+    
+    -#%script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
+    -#%script
+      window.jQuery || document.write('<script src="jquery-1.9.1.js"><\/script>')
+
+    -#cript{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js" }
+
+    -#cript{:src => "https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.js" }

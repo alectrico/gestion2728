@@ -1,0 +1,2 @@
+Los layouts de estos controladores van a application.html.haml porque se hacen pasar por subclases del controller application_controller.
+

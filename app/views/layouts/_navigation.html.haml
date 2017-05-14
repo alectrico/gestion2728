@@ -1,0 +1,47 @@
+%nav.navbar.navbar-toggleable-sm.navbar-inverse.bg-faded
+  -if current_user
+    -if current_user.ingeniero
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-bookmark"></span> Atenciones'.html_safe,atenciones_path)
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-th"></span> Tipo de Auditorías'.html_safe,tipo_auditorias_path)
+
+
+    -elsif current_user.admin
+      -if user_session["role"] == '1'
+        .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-camera"></span><col-hidden-xs> Evidencias </col-hidden-xs>'.html_safe, gestion_evidencias_path)
+        .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-education"></span> OTEC'.html_safe, gestion_registros_path)
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-user"></span> Auditores'.html_safe, gestion_usuarios_path)
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-check"></span> Auditorías'.html_safe, gestion_auditorias_path)
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-list"></span> Criterios'.html_safe, gestion_criterios_path)
+
+    -elsif current_user.auditor
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-camera"></span><col-hidden-xs> Evidencias </col-hidden-xs>'.html_safe, gestion_evidencias_path)
+      .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-check"></span> Auditorías'.html_safe, gestion_auditorias_path)
+
+
+  - else
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-home"></span> Home'.html_safe, root_path)
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-phone-alt"></span> Contacto'.html_safe, contacto_path)
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-info-sign"></span> About'.html_safe, about_path)
+    .nav-item
+      %a.nav-link{:href => new_evento_path}
+        .glyphicon.glyphicon-plus{:style => "font-size: 0.5rem"}
+        %span.glyphicon.glyphicon-map-marker Agendar Visita
+
+
+  - if current_user 
+    .nav-item
+      -unless current_user.admin or current_user.ingeniero or current_user.auditor
+        %a.nav-link{:href => eventos_path}
+          %span.glyphicon.glyphicon-map-marker Visitas
+    .nav-item
+    -unless current_user.admin or current_user.ingeniero or current_user.auditor
+      %a.nav-link{:href => new_evento_path}
+        .glyphicon.glyphicon-plus{:style => "font-size: 0.5rem"}
+        %span.glyphicon.glyphicon-map-marker Agendar Visita
+
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-cog"></span> Perfil'.html_safe, edit_user_registration_path)
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-off"></span> Cerrar sesión'.html_safe, destroy_user_session_path, method: 'delete')
+
+  - else
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-log-in"></span> Iniciar sesión'.html_safe, new_user_session_path)
+    .nav-item.nav-link= link_to('<span class="glyphicon glyphicon-edit"></span> Registro'.html_safe, new_user_registration_path)

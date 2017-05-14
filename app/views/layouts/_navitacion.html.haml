@@ -1,0 +1,38 @@
+%ul.nav.navbar-toggler
+  %li.nav-item
+    %a.nav-link{:href => edit_user_registration_path} 
+      %span.glyphicon.glyphicon-cog
+  %li.nav-item
+    %a.nav-link{:href => gestion_evidencias_path}
+      %span.glyphicon.glyphicon-cog
+
+%ul.nav.navbar-nav
+  -if current_user
+
+    -if current_user.admin
+      -if user_session["role"] == '1'
+        %li= link_to('<span class="glyphicon glyphicon-camera"></span><col-hidden-xs> Evidencias </col-hidden-xs>'.html_safe, gestion_evidencias_path)
+
+         
+      %li= link_to('<span class="glyphicon glyphicon-education"></span> OTEC'.html_safe, gestion_registros_path)
+      %li= link_to('<span class="glyphicon glyphicon-user"></span> Auditores'.html_safe, gestion_usuarios_path)
+      %li= link_to('<span class="glyphicon glyphicon-flag"></span> Auditorías'.html_safe, gestion_auditorias_path)
+      %li= link_to('<span class="glyphicon glyphicon-list"></span> Criterios'.html_safe, gestion_criterios_path)
+
+    -elsif current_user.auditor
+      %li= link_to('<span class="glyphicon glyphicon-camera"></span> Evidencias'.html_safe, gestion_evidencias_path)
+
+  - else
+    %li= link_to('<span class="glyphicon glyphicon-home"></span> Home'.html_safe, root_path)
+    %li= link_to('<span class="glyphicon glyphicon-phone-alt"></span> Contacto'.html_safe, contacto_path)
+    %li= link_to('<span class="glyphicon glyphicon-info-sign"></span> About'.html_safe, about_path)
+
+-#%ul.nav.navbar-nav.navbar-right
+  - if current_user
+    %li= link_to('<span class="glyphicon glyphicon-cog"></span> Perfil'.html_safe, edit_user_registration_path)
+    %li= link_to('<span class="glyphicon glyphicon-off"></span> Cerrar sesión'.html_safe, destroy_user_session_path, method: 'delete')
+    = render '/layouts/search'
+
+  - else
+    %li= link_to('<span class="glyphicon glyphicon-log-in"></span> Iniciar sesión'.html_safe, new_user_session_path)
+    %li= link_to('<span class="glyphicon glyphicon-edit"></span> Registro'.html_safe, new_user_registration_path)

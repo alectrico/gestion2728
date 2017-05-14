@@ -1,0 +1,26 @@
+%form{:id => "myForm", :method => "post"}
+  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+  = tag(:input, :type => "hidden", :name => "email",:value => current_user.email)
+
+
+  %input{:name => "event[fecha]", :id => "event_fecha", :value => "", :readonly => true}
+  %input{:name => "event[descripcion]", :id => "event_descripcion", :value => "", :readonly => true}
+
+  %button{:id => "testit"}testit
+
+%script
+  $('#testit').click(function(){
+  $('#event_fecha').val('10/10/2016');
+  $('#event_descripcion').val('Caen los tapones');
+
+  console.log($('#event_fecha').valid());
+  -#console.log($('#event_descripcion').valid());
+
+  console.log(validator.element('#event_fecha'));
+  -#console.log(validator.element('#event_descripcion]'));
+
+  })
+  });
+
+
+

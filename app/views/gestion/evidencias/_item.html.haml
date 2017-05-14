@@ -1,0 +1,76 @@
+-#.col-6.col-xs-6.col-sm-6.col-md-3.col-lg-2
+-if item.id
+  -@gestion_evidencia = item
+  .col-12.col-xs-12.col-sm-6.col-md-4.col-lg-3{:id => item.id}
+    .portfolio-item
+      = link_to('<span class="glyphicon glyphicon-camera"></span> '.html_safe, gestion_evidencia_path(item))
+      .portfolio-imagen
+        =link_to(image_tag(code_image_evidencia_url(item), :style => "max-width: 100%"), item) if item.bits
+        -#
+          item.prepare      
+          link_to(image_tag(item.imagen.thumb('130x130#').url,:width => "100%"),item) if item.bits
+
+        -#= form_for @gestion_evidencia,:url => gestion_evidencia_path(item), :html => {:class => "form-horizontal left"}  do |f|
+          .container
+            .row
+              .col-sm-6
+                = f.file_field :imagen_file, 'data-max-file-size' => '1M','data-allowed-file-extensions' => 'jpg',:id => "imagen#{item.id}"
+                = f.submit 'Guardar'
+
+
+
+        .ribbon-wrapper
+          .price-ribbon
+            = render partial:  'shared/badge_criterio',:locals => {:item => item}
+            = link_to item.criterio.numeral, gestion_criterio_path(item.criterio.id) if item.criterio
+        %hr
+        =render partial: 'shared/avatar', :locals => {:item => item.usuario} if current_user.admin
+        %br
+        -if item.lugar
+          %b Lugar
+          %p=item.lugar 
+        -if item.descripcion
+          %b Descripción
+          %p=item.descripcion
+
+        .portfolio-info
+          %ul
+            %li.portfolio-project-name
+              = link_to(item.auditoria.registro.razon_social.truncate(20), gestion_registro_path(item.auditoria.registro.id)) if item.auditoria
+
+  -#idden-md-down
+    %hr
+    .jumbotron
+      = link_to(image_tag(item.imagen.thumb('130x130#').url),item) if item.imagen
+    %hr
+      %p
+        %b Descripcion:
+        = item.descripcion
+
+
+      %p
+        %b Lugar:
+        = item.lugar
+
+
+      %p
+        %b Estado:
+        = item.estado
+
+    %hr
+      %p
+        %b Criterio:
+        = item.criterio.texto
+    %hr
+    %p="Evidencia que no pertenece a ninguna auditoria" unless item.auditoria
+    %h2=item.auditoria.registro.razon_social if item.auditoria
+    %h4=item.auditoria.registro.nombre_fantasia if item.auditoria
+    %p.float-left.hidden-md-up
+      = link_to(image_tag(item.auditoria.usuario.imagen.thumb('30x30#').url),item.auditoria.usuario) if item.auditoria
+    %hr
+-#%script
+  $(document).ready(function(){
+  $('dropify').dropify();
+  var drEvent = $( "#imagen#{item.id}").dropify();
+  });
+

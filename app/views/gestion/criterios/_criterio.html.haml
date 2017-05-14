@@ -1,0 +1,29 @@
+.container
+  .row.row-offcanvas.row-offcanvas-left
+    .col-12.col-md-9
+      %p.float-right.hidden-md-up
+        -#%button.btn.btn-primary.btn-sm{"data-toggle" => "offcanvas", :type => "button"} Menú
+        = link_to 'Ver',  criterio_path(criterio.id),:class => 'btn btn-primary'
+
+      .jumbotron
+        %tr
+          = link_to('<span class="glyphicon glyphicon-camera"></span> '.html_safe, gestion_criterio_path(criterio))
+
+        %tr
+          = criterio.numeral
+        %tr
+          = criterio.texto
+
+          -#= link_to(image_tag(criterio.imagen.thumb('130x130#').url),criterio) if criterio.imagen
+    -#idebar.col-6.col-md-3.sidebar-offcanvas
+      -if params[:id] 
+        .list-group-item
+          = link_to 'Pdf',  download_pdf_criterio_path(criterio.id)
+      .list-group-item
+        = link_to 'Ver',      criterio_path(criterio.id)
+      -if params[:id]
+        .list-group-item
+          = link_to 'Editar',       edit_criterio_path(criterio.id)
+      .list-group-item
+        = link_to 'Eliminar', criterio_path(criterio.id), method: :delete, data: { confirm: '¿Está seguro?' }
+  %hr/

@@ -1,0 +1,13 @@
+= form_for @gestion_atencion do |f|
+  - if @gestion_atencion.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gestion_atencion.errors.count, "error")} prohibited this gestion_atencion from being saved:"
+      %ul
+        - @gestion_atencion.errors.full_messages.each do |msg|
+          %li= msg
+  .form_group
+    = f.text_field_con_label :usuario_id, :readonly => true
+  .form_group
+    = f.text_field_con_label :estado, :readonly => true
+  .actions
+    = f.submit 'Save'

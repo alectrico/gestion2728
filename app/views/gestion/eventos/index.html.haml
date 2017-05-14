@@ -1,0 +1,44 @@
+%h2 Lista de Eventos
+
+
+.table-responsive
+  %table.table.table-striped.events-list
+  %table.events-list
+    %thead
+      %tr
+        %th Fecha
+        %th Titulo
+        %th Ingeniero
+        -#%th Descripción
+        -#%th Email
+        -#%th Direccion
+        %th Usuario
+        -#%th Coordenadas
+        -#%th Type
+        -#%th
+        %th
+
+    %tbody
+      -@gestion_eventos.each do |evento|
+        %tr{:style => (evento.fecha == Date.today ? "background-color: Lavender":(evento.fecha > Date.today ? "background-color :LightYellow":""))}
+          %td
+            .event-date
+              .event-day=get_day(evento.fecha)
+              .event-month=get_month(evento.fecha)
+          %td=evento.titulo 
+          %td=evento.ingeniero.nombre #if evento.ingeniero_id
+          -#d=evento.descripcion
+          -#%td=evento.email
+          -#d=evento.direccion
+          %td=link_to evento.usuario.nombre, gestion_usuario_path(evento.usuario) if evento.usuario
+          -#%td=evento.coordenadas
+          -#%td=evento.type
+          -#%td= link_to "Ver", evento
+          %td.nav-item.nav-link= link_to('<span class="glyphicon glyphicon-map-marker"></span>'.html_safe,edit_gestion_evento_path(evento))
+
+          -#d= link_to "Editar", edit_gestion_evento_path(evento)
+          -#%td= link_to "Eliminar",evento, :method => :delete, :data => { :confirm => "¿Está seguro?" }
+
+%br
+
+-#= link_to "Agregar", new_gestion_evento_path

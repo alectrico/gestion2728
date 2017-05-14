@@ -1,0 +1,10 @@
+-content_for :jumbo_contenido do
+  %h1 Editando atencion
+
+
+  = render 'form'
+
+  = link_to 'Ver', @gestion_atencion
+  \|
+  = link_to 'Lista', gestion_atenciones_path
+

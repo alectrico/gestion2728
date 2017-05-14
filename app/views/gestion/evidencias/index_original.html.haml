@@ -1,0 +1,50 @@
+%h2 Lista de Evidencias
+
+
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Foto
+        %th Auditoria
+        %th Criterio
+        %th Fotógrafo
+        -#%th Imagen uid
+        -#%th Imagen name
+        -#h Tipo contenido
+        -#%th Nombre archivo
+        -#%th Bits
+        -#%th Thumbnail
+        -#%th Tempfile
+        %th Descripcion
+        %th Lugar
+        -#%th Estado
+          %th
+          %th
+          %th
+
+    %tbody
+      -@gestion_evidencias.each do |evidencia|
+        %tr
+          %th= link_to( image_tag(evidencia.imagen.thumb('130x130#').url), evidencia) if evidencia.imagen
+          %td=evidencia.auditoria_id
+          %td=evidencia.criterio.numeral
+          %td=evidencia.usuario.nombre
+          -#%td=evidencia.imagen_uid
+          -#%td=evidencia.imagen_name
+          -#d=evidencia.tipo_contenido
+          -#%td=evidencia.nombre_archivo
+          -#%td=evidencia.bits
+          -#%td=evidencia.thumbnail
+          -#%td=evidencia.tempfile
+          %td=evidencia.descripcion
+          %td=evidencia.lugar
+          -#
+            %td=evidencia.estado
+            %td= link_to "Ver", evidencia
+            %td= link_to "Editar", edit_gestion_evidencia_path(evidencia)
+            %td= link_to "Eliminar",evidencia, :method => :delete, :data => { :confirm => "¿Está seguro?" }
+
+%br
+
+= link_to "Agregar", new_gestion_evidencia_path

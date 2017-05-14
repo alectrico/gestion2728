@@ -1,0 +1,24 @@
+-if item 
+  -if  item.respond_to?('criterio')
+    -if item.criterio
+      -case item.criterio.type
+        -when "Gestion::Politica"
+          %span.badge.badge-info="politica"
+        -when "Gestion::Procedimiento"
+          %span.badge.badge-danger="procedimiento"
+        -when "Gestion::Requisito"
+          %span.badge.badge-warning="requisito"
+        -when "Gestion::Criterio"
+          %span.badge.badge-info="criterio"
+  -else #item es criterio
+    -case item.type
+      -when "Gestion::Politica"
+        %span.badge.badge-info="politica"
+      -when "Gestion::Procedimiento"
+        %span.badge.badge-danger="procedimiento"
+      -when "Gestion::Requisito"
+        %span.badge.badge-warning="requisito"
+      -when "Gestion::Criterio"
+        %span.badge.badge-info="criterio"
+
+

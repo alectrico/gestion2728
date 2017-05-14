@@ -1,0 +1,55 @@
+= form_for @gestion_evidencia do |f|
+  - if @gestion_evidencia.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gestion_evidencia.errors.count, "error")} impide(n) que se pueda guardar este registro de evidencia:"
+      %ul
+        - @gestion_evidencia.errors.full_messages.each do |msg|
+          %li= msg
+
+  -#.field
+    = f.label "auditoria_id"
+    = f.select(:auditoria_id, @gestion_auditorias.map {|u| ["id:" + " | " + u.registro.razon_social + " | " + "auditor: " + u.usuario.nombre , u.id]})
+
+  -#ield
+    = f.label "criterio_id"
+    = f.select(:criterio_id, @gestion_criterios.map {|u| ["tipo:" + " | " + u.type + " | " + "numeral: " + u.numeral + " | " + u.texto   , u.id]})
+
+  -#.field
+    = f.label "usuario_id"
+    = f.select(:usuario_id, @gestion_usuarios.map {|u| ["id:" + " | " + u.email + " | " + ": " + u.nombre + " | " + u.login   , u.id]})
+
+
+
+  = f.hidden_field :usuario_id, :value => current_user.perfil_id if current_user.auditor
+  = f.hidden_field :auditoria_id, :value => @gestion_auditoria.id if @gestion_auditoria 
+
+  = f.hidden_field :auditoria_id, :value => @gestion_auditorias.each.first.id if @gestion_auditorias and @gestion_auditorias.each.count == 1
+  %p OTEC
+
+  %h2= @gestion_auditoria.registro.razon_social if @gestion_auditoria
+  %h2= @gestion_auditorias.each.first.registro.razon_social if @gestion_auditorias and @gestion_auditorias.each.count == 1
+
+  = f.select_con_label(:auditoria_id, @gestion_auditorias.map {|u| ["id:" + " | " + u.registro.razon_social + " | " + "auditor: " + u.usuario.nombre , u.id]}) if @gestion_auditorias and @gestion_auditorias.each.count > 1
+
+
+  = f.select_con_label(:criterio_id, @gestion_criterios.map {|u| ["tipo:" + " | " + u.type + " | " + "numeral: " + u.numeral + " | " + u.texto   , u.id]}) if @gestion_criterios
+
+  = f.select_con_label :usuario_id,  @gestion_usuarios.map {|u| ["id:" + " | " + u.email + " | " + ": " + u.nombre + " | " + u.login   , u.id]} if @gestion_usuarios if current_user.admin
+
+  -#= f.text_field_con_label :imagen_name
+  = f.text_field_con_label :descripcion
+  = f.text_field_con_label :lugar
+  .container
+    .row
+      .col-sm-12
+        = f.file_field :imagen_file, 'data-max-file-size' => '1M','data-allowed-file-extensions' => 'jpg'
+  = f.submit 'Guardar'
+
+
+%script
+  $(document).ready(function(){
+  $('dropify').dropify();
+  var drEvent = $('#gestion_evidencia_imagen_file').dropify();
+ 
+  });
+

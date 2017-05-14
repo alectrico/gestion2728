@@ -1,0 +1,11 @@
+-if params[:id] 
+  .list-group-item
+    = link_to 'Pdf',  download_pdf_auditoria_path(@gestion_auditoria)
+.list-group-item
+  = link_to 'Ver',      @gestion_auditoria
+-if params[:id]
+  .list-group-item
+    = link_to 'Editar',       edit_auditoria_path(@gestion_auditoria)
+.list-group-item
+  = link_to 'Eliminar', @gestion_auditoria, method: :delete, data: { confirm: '¿Está seguro?' }
+

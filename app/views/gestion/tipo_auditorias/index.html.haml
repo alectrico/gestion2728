@@ -1,0 +1,23 @@
+%h2 Lista de Tipo auditorias
+
+
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Nombre
+        %th
+        %th
+        %th
+
+    %tbody
+      -@gestion_tipo_auditorias.each do |tipo_auditoria|
+        %tr   
+          %td=tipo_auditoria.nombre
+          %td= link_to "Ver", tipo_auditoria
+          %td= link_to "Editar", edit_gestion_tipo_auditoria_path(tipo_auditoria)
+          %td= link_to "Eliminar",tipo_auditoria, :method => :delete, :data => { :confirm => "¿Está seguro?" }
+
+%br
+
+= link_to "Agregar", new_gestion_tipo_auditoria_path

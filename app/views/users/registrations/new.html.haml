@@ -1,0 +1,45 @@
+-#=stylesheet_link_tag 'gestion/signin.css', media: 'screen', 'data-turbolinks-track': 'reload'
+
+.container
+  .text-center
+    %h1 Registro
+
+  .row
+    .col-lg-offset-3.col-lg-6.col-md-offset-3.col-md-6.col-sm-offset-2.col-sm-8.col-xs-12
+      .panel.panel-default
+        .panel-body
+          = form_for(resource, as: resource_name,:html => {}, url: registration_path(resource_name)) do |f|
+            = devise_error_messages!
+            -#2.form-signin-heading Registro
+            .form-group
+              %label.sr-only{:for => "name"} nombre
+              = f.label :name, "Nombre"
+              = f.text_field :name, :class => "form-control", :placeholder => "Nombre",:type => "text"
+            .form-group
+              %label.sr-only{:for => "name"} fono
+              = f.label :fono, "Teléfono"
+              = f.text_field :fono, :class => "form-control", :placeholder => "Teléfono de contacto",:type => "text"
+            .form-group
+              %label.sr-only{:for => "email"} email
+              = f.label :email
+              = f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "email",:type => "email"
+            .form-group
+              %label.sr-only{:for => "password"} Contraseña
+              = f.label :password, 'Contraseña'
+              - if @minimum_password_length
+                %em
+                  (#{@minimum_password_length} caracteres como mínimo)
+              = f.password_field :password, autocomplete: "off",:class => "form-control",:placeholder => "contraseña"
+            .form-group
+              %label.sr-only{:for => "password_confirmation"} Confirmación de contraseña
+              = f.label :password_confirmation, 'Confirmación de contraseña',  :class => "label-control"
+              %br/
+              = f.password_field :password_confirmation, autocomplete: "off", :placeholder => "repita la contraseña", :class => "form-control"
+            .actions
+              %button.btn.btn-primary.btn-block{:type => "submit"} Registrar
+
+        .panel-footer
+          %p ¿Ya está registrado ?
+          = render "devise/shared/links"
+
+

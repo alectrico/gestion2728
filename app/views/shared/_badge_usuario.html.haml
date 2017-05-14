@@ -1,0 +1,17 @@
+= item.estado
+-if item.activo
+  %span.badge.badge-success="activo "
+
+-if item.user
+  -if item.user.admin
+    %span.badge.badge-danger="admin"
+  -if item.user.ingeniero
+    %span.badge.badge-info="ingeniero"
+  -if item.user.auditor
+    %span.badge.badge-primary="auditor"
+  -if item.user.profesor
+    %span.badge.badge-default="profesor"
+
+-else
+  %span.badge.badge-warning="desenganchado"
+

@@ -1,0 +1,9 @@
+#encoding: ISO-8859-1
+%div{:style => "padding: 4px; min-height:110px"}
+  %div{:style => "width:230px;vertical-align:top;float:left; padding-right: 15px;margin:1px; margin-botton;15px"}
+    %a{:style=>"display:inline-block;padding:7px 15px;margin-right:10px;background-color:#d44b38;color:#fff;font-size:25px;font-weight:bold;border:solid 1px #c43b28;white-space:normal;text-decoration:none; float:left",:href=> Rails.configuration.domain[:name_https],:target=>"_blank"}Bienvenid@  
+  %span{:style => "color: #686868;margin-top:2px; padding-bottom:6px;font-size: .8em"}
+    = "Estimado(a) #{@user.name} UD ha sido aceptado(a) como #{@rol} en #{@sitio}.Esperamos serles útil." 
+  %p Gracias por unírsenos
+  = render '/shared/firma_admin'
+

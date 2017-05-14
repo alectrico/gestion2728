@@ -1,0 +1,2 @@
+$("<%= escape_javascript( render partial: 'gestion/evidencias/item',:locals => {:item => @gestion_evidencia}, :layout => 'jumbotron') %>").prependTo("<%= escape_javascript("#evidencias#{@gestion_evidencia.auditoria_id}") %>");
+

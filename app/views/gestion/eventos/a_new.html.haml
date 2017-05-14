@@ -1,0 +1,123 @@
+-content_for :before_assets do
+  =javascript_include_tag 'https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'
+  =stylesheet_link_tag  'https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css'
+
+-content_for :jumbo_contenido do
+  .section
+    .container
+      .row
+
+        / Map
+        #map
+        -##contact-us-map
+        / End Map
+
+        #contact
+        / Contact Info
+        -#%p.contact-us-details
+          %b Dirección:
+          Pje Emilio Sanfuentes Vergara 526, Pudahuel, Santiago, Chile
+          %br/
+          %b Celular:
+          +56 9 620009211
+          %br/
+          %b Email:
+          %a{:href => "mailto:presupuesto@alectrico.cl"} presupuesto@alectrico.cl
+        / End Contact Info
+      
+
+        -#%h2 
+        -#%ul
+          %li Instalaciones de hasta 10kw (aproxidamente 45A)
+          %li 10 metros entre el medidor y el primer tablero eléctrico
+          %sli Ubicación Providencia. Ñuñoa. Estación Central. Quinta Normal
+
+
+      .contact-form-wrapper
+
+        = form_for @gestion_evento, :html => {:class => "form-horizontal left" } do |f|
+          -#= form_errors_for @gestion_evento
+          -#if @gestion_evento.errors.any?
+            #error_explanation
+            %h2
+              = pluralize(@gestion_evento.errors.count, "error")
+              impiden que se pueda salvar este evento:
+            %ul
+              - @gestion_evento.errors.full_messages.each do |msg|
+                %li= msg
+
+          .col-xs-12.col-sm-4.col-md-3.alert.alert-danger
+
+            -#form-group
+              %label.col-sm-3.control-label{:for => "Coordenadas"}
+                %b Coordenadas
+              .col-xs-12.col-sm-10.col-md-11
+                %input#Coordenadas.form-control{:placeholder => "Mueva el marcador en el mapa", :type => "text"}/
+
+            .form-group
+              = f.label :direccion,:class => "col-xs-6.col-sm-2.col-md-2 label-control"
+              .col-xs-12.col-sm-10.col-md-11
+                = f.text_field :direccion,:class => "form-control"
+            .form-group
+              = f.label :Descripcion, :class => "col-xs-6.col-sm-2.col-md-2 label-control"
+              .col-xs-12.col-sm-10.col-md-11
+                =f.text_field :descripcion,:class => "form-control"
+
+            -#orm-group
+              = f.label :nombre,:class => "col-xs-6.col-sm-2.col-md-12 label-control"
+              .col-xs-12.col-sm-10.col-md-11
+                = f.text_field :nombre, :class => "form-control"
+
+            .form-group
+              = f.label :fono,:class => "col-xs-6.col-sm-2.col-md-12 label-control"
+              .col-xs-12.col-sm-10.col-md-11
+                = f.number_field :fono, :class => "form-control"
+
+            .form-group
+              = f.label :email,:class => "col-xs-6.col-sm-2.col-md-12 label-control"
+              .col-xs-12.col-sm-10.col-md-11
+                = f.text_field :email, :class => "form-control"
+
+                -# :class => 'datetimepicker'
+
+            -#ol-xs-12.col-sm-6.col-md-5
+            -#.form-group
+              #datetimepicker12
+
+            .form-group
+              %label.col-sm-3.control-label{:for => "Coordenadas"}
+                %b Hora
+              .col-xs-12.col-sm-10.col-md-10
+                .input-group.date#datetimepicker13
+                  =f.text_field :fecha, :class => "form-control"
+                  %span.input-group-addon
+                    %span.glyphicon.glyphicon-calendar
+
+          .row
+            .form-group
+              = f.submit "Agendar"#, :classs => "btn btn-lge btn-primary"
+
+
+%script
+
+var j = jQuery.noConflict();
+j(function () { j('#datetimepicker13').datetimepicker({ showTodayButton: true ,locale: 'es' }); });
+
+
+L.mapbox.accessToken = 'pk.eyJ1IjoiYWxlY3RyaWNvIiwiYSI6IkxXOHBCTDQifQ.5g29nLMhl7QjFCtw2nyMeQ' ;
+
+var map= L.mapbox.map('map', 'alectrico.l81j26a9');
+map.setView([-33.444, -70.650], 12);
+
+-#L.marker([-33.455, -70.745]).addTo(map).bindPopup('Mi ubicación <br> Aproximada.').openPopup();
+
+mk = L.marker([-33.420, -70.625],draggable = 'true').addTo(map).bindPopup('Indique donde <br> quiere el servicio').openPopup();
+
+mk.dragging.enable();
+mk.on('mouseout',function(e) {
+-#alert(e.latlng);
+$("#Coordenadas").val(e.latlng);
+});
+
+ 
+

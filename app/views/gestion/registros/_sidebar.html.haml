@@ -1,0 +1,12 @@
+-if params[:id] 
+  .list-group-item
+    = link_to 'Pdf',  download_pdf_registro_path(@gestion_registro)
+  .list-group-item
+    = link_to 'Enviar presentacion',  enviar_presentacion_registro_path(@gestion_registro)
+  .list-group-item
+    = link_to 'Ver',      @gestion_registro
+  .list-group-item
+    = link_to 'Editar',       edit_registro_path(@gestion_registro)
+  .list-group-item
+    = link_to 'Eliminar', @gestion_registro, method: :delete, data: { confirm: '¿Está seguro?' }
+

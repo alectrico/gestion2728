@@ -1,0 +1,56 @@
+.col-12.col-xs-12.col-sm-6.col-md-4.col-lg-3
+  .float-left
+    -if registro.en_auditoria?
+      %span.badge.badge-info="en auditoria"
+  .portfolio-item
+    = link_to('<span class="glyphicon glyphicon-education"></span> '.html_safe, gestion_registro_path(registro))
+
+    .portfolio-imagen
+      -#link_to(image_tag(item.imagen.thumb('130x130#').url,:width => "100%"),item) if item.imagen
+      .ribbon-wrapper
+        -if registro.presentada?
+          .price-ribbon.ribbon-blue
+            = registro.presentacion
+          -##link_to item.criterio.numeral, gestion_criterio_path(item.criterio.id)
+    %hr
+    %br
+    -if registro.en_auditoria?
+      .alert.alert-success{:role => "alert"}
+        %strong Bien!
+        Esta empresa ya está siendo
+        -registro.auditorias.each do |a|
+          = succeed "." do
+            %a.alert-link{:href => gestion_auditoria_path(a.id)} auditada
+
+
+    -registro.auditorias.each do |a|
+      Esta OTEC tiene auditoria con:
+      = render partial: 'shared/avatar', :locals => {:item => a.usuario}
+      %p 
+        Desde #{date_for_display(a.created_at)}
+      %p #{a.evidencias.count} evidencias
+
+   
+      %hr
+    -#tem.descripcion
+    .portfolio-info
+      %ul
+        %li
+          =link_to(registro.razon_social, gestion_registro_path(registro.id)) 
+
+
+
+
+-#ontainer
+  .row.row-offcanvas.row-offcanvas-left
+    .col-12.col-md-9
+      %p.float-right.hidden-md-up
+        -#%button.btn.btn-primary.btn-sm{"data-toggle" => "offcanvas", :type => "button"} Menú
+        = link_to 'Ver',  registro_path(registro.id),:class => 'btn btn-primary'
+
+      .jumbotron
+        %p
+          = registro.razon_social
+        %p
+          = registro.nombre_fantasia
+

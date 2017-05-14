@@ -1,0 +1,49 @@
+-#if current_user.nil?
+=form_for User.new,:remote => true,:only_path => false,:name => 'form_login' do |f|
+  -#form_errors_for User.new
+  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+  -#.form-group
+  -#.col-sm-6
+  = f.text_field :name, :class => "form-control",:placeholder => "Nombre", :type => "hidden"
+
+
+  .row
+    .col-lg-offset-3.col-lg-4.col-md-offset-1.col-md-5.col-sm-offset-1.col-sm-8.col-xs-offset-1.col-xs-10
+
+      .input-group
+        %input.form-control.input-lg{:id=> "register-username",:placeholder => "Su nombre",:name => "user[name]"}/
+        %span.input-group-btn
+          %button.btn{:type => "submit",:name => "commit",:value => "Usar"} Seguir como
+    .col-lg-offset-3.col-lg-6.col-md-offset-1.col-md-5.col-sm-offset-1.col-sm-8.col-xs-offset-1.col-xs-10
+      %input.form-control.input-lg{:id => "register-email",:placeholder => "Su email",:name => "user[email]"}/
+      -#%span.input-group-btn
+       
+        -#%button.btn.btn-lg{:type => "submit",:name => "commit",:value => "Registrar"} Usar alectrico!
+ 
+        -#%button.btn.btn-lg{:type => "submit",:name => "commit",:value => "Login/Registro"} Suscribirme!
+  .row
+    .col-lg-offset-3.col-lg-6.col-md-offset-1.col-md-8.col-sm-offset-1.col-sm-8.col-xs-offset-1.col-xs-8
+
+      -#%p Usted puede usar su cuenta de Facebook para registrarse en #{Domain.get_modulo}
+      %br
+      %br
+      .social-login-buttons
+        -if current_user.nil?
+          %fb:login-button{:onlogin => "checkLoginState();", :scope => "public_profile,email"}
+        #status
+         
+  .form-group
+    .col-sm-6
+      = f.password_field :password,:class => "form-control", :placeholder => "password", :type => "hidden"
+  .form-group
+    .col-sm-6
+      = f.password_field :password_confirmation ,:class => "form-control",:placeholder => "confirmación de password", :type => "hidden"
+  .form-group
+    .col-sm-6
+      = f.text_field :fono ,:class => "form-control",:placeholder => "fono", :type => "hidden"
+
+  -#.col-sm-12
+    = f.submit "Login/Registro",:class => "btn btn-lg"
+= render '/facebook/facebook_sdk'
+
+

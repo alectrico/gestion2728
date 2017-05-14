@@ -1,0 +1,17 @@
+#encoding: ISO-8859-1
+= form_for @micropost do |f|
+
+  = render 'shared/error_messages', object: f.object
+  .field
+    .form-group
+      =f.label :titulo, :class => "label-control col-sm-2"
+      .col-sm-10
+        =f.text_field :titulo ,:class => "field-control"
+  
+  .field
+    .form-group
+      .col-sm-12
+        =  f.text_area :content, placeholder: "Escriba un comentario en menos de 140 caracteres ...", :class => "field-control", :rows => 5 
+  .form-group
+    .col-sm-6
+      = f.submit "Publicar", :class => "btn btn-large btn-primary"  

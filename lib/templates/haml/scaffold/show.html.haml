@@ -1,0 +1,21 @@
+<% @namespace_= capture do %><% if not class_name.empty? %><%=class_name.to_s.deconstantize.downcase %>_<%end%><%end%>
+<% @namespace = capture do %><% if not class_name.empty? %><%=class_name.to_s.deconstantize.downcase %><%end%><%end%>
+<% @var = capture do %>@<%=@namespace_%><%=plural_name.singularize%><%end%>
+<% @constante = capture do %><%=class_name %><%end%>
+<% @value = capture do %><%=@namespace_%><%=plural_name.singularize%><%end%>
+<% @vars = capture do %>@<%=@namespace_%><%=plural_name%><%end%>
+
+
+%p#notice= notice
+
+<%@attributes.each do |a| %>
+%p
+  %b <%=a.name.capitalize%>:
+  = <%=@var%>.<%=a.name%>
+
+<%end%>
+
+= link_to "Editar", edit_<%= @namespace_%><%=plural_name.singularize%>_path(<%=@var%>)
+\|
+= link_to 'Lista', <%= @namespace_ %><%=plural_name %>_path
+

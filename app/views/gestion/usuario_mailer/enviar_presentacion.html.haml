@@ -1,0 +1,26 @@
+!!!
+%html{:lang => "es"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Presentacion
+    -#%meta{:charset => "ISO-8859-1"}/
+  %body
+    #chapter_1{"data-role" => "page"}
+      %div{"data-role" => "content"}
+        %p
+        .sidebar{:align => "center"}
+          %table{:cellpadding => "10"}
+            %tr
+              %td{:style => "background-color: #404040;", :width => "2%"}
+              %td{:align => "left", :style => "background-color: #f0f0f0;"}
+                = image_tag(Rails.configuration.domain['brand_card3'],width: "150")
+                %span.sidebar_name=Rails.configuration.domain['autor_nombre']
+                %br/
+                =Rails.configuration.domain['resume']
+        %p
+        .concept{:style => "background-color:#F0F0F0; border-top-right-radius:1em; border-bottom-left-radius:1em; padding: .1em; margin: 3%"}
+          %p
+            %span.titulo{:style => "font-size:large; color: #800; background-color: chartreuse; padding-top: .5em; padding-bottom: .1em; padding-right: .5em; padding-left: .5em; border-top-right-radius: 1em; border-bottom-lef-radius: 1em;"}=Rails.configuration.domain['concepto_mail_titulo']
+            %span.contenido
+              =Rails.configuration.domain['concepto_mail_contenido']
+        %hr/

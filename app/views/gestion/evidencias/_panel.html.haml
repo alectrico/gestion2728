@@ -1,0 +1,5 @@
+%h1 Evidencias
+- current_user.usuario.auditorias.each do |a|
+  %section.row.text-center.placeholders
+    %nav.navbar.navbar_pilled
+      .nav-item.nav-link= link_to("<span class='glyphicon glyphicon-plus'></span> <span class='glyphicon glyphicon-camera'></span> Evidencia a <strong> #{a.registro.razon_social}</strong>".html_safe,gestion_auditoria_path(a))

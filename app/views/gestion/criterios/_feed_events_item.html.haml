@@ -1,0 +1,58 @@
+#encoding: UTF-8
+-item=feed_events_item
+-if !item.nil?
+  .col-lg-3.col-md-5.col-sm-6.col-xs-12
+    %li.microposts{:id => "event#{item.id}"}
+      .textarea
+        -if !item.fecha.nil?
+          -if item.fecha < Time.now
+            .alert.alert-danger
+              #{link_to '[-]', item, method: :delete,:remote => true} #{date_for_display(item.fecha)} Dir: #{item.direccion} Para: #{item.titulo}
+          -else
+            .alert.alert-info
+              #{link_to '[-]', item, method: :delete,:remote => true} #{date_for_display(item.fecha)} Dir: #{item.direccion} Para: #{item.titulo}
+
+          -#=item.presupuesto_id
+
+  -#if !item.nil? 
+    %li.microposts{:id => "event#{item.id}"}
+      .textarea
+        =link_to '[-]', item, method: :delete,:remote => true
+        -#="#{item.id} #{item.Fecha} de #{item.Descripcion}"
+
+        
+      -#if !item.created_at.nil? and TipoMaterial.exists?(item.tipo_material_id)
+        -tipo= TipoMaterial.find_by_id(item.tipo_material_id)
+        -item.cantidad = 1 unless !item.cantidad.nil? or item.cantidad = 0
+        -suma = item.costo * item.cantidad unless item.costo.blank?
+        -suma = tipo.costo * item.cantidad unless !item.costo.blank?
+        - if item.cantidad == 1
+          -s="#{number_to_currency(suma,:precision => 0)} por #{tipo.unidad} #{tipo.nombre}"
+        -else
+          -s="#{number_to_currency(suma,:precision => 0)} por #{item.cantidad} #{tipo.unidad} de #{tipo.nombre} "
+
+        -if item.ya_lo_instale
+          .alert.alert-info
+            =link_to '[-]', item, method: :delete,:remote => true
+            ="#{number_to_currency(suma,:precision => 0)} por #{item.cantidad} #{tipo.unidad} de #{tipo.nombre} "
+        -elsif item.ya_me_lo_pagaron
+          .alert.alert-success
+            =link_to '[-]', item, method: :delete,:remote => true
+            ="#{number_to_currency(suma,:precision => 0)} por #{item.cantidad} #{tipo.unidad} de #{tipo.nombre} "
+        -elsif item.ya_lo_compre
+          .alert.alert-error
+            =link_to '[-]', item, method: :delete,:remote => true
+            ="#{number_to_currency(suma,:precision => 0)} por #{item.cantidad} #{tipo.unidad} de #{tipo.nombre} "
+        -else
+          -if item.me_sobro
+            .alert.alert-success  
+              =link_to '[-]', item, method: :delete,:remote => true
+              ="#{number_to_currency(suma,:precision => 0)} por #{item.cantidad} #{tipo.unidad} de #{tipo.nombre} me sobró"
+          -elsif item.merma_de_rollo
+            .alert
+              =link_to '[-]', item, method: :delete,:remote => true
+              ="#{number_to_currency(suma,:precision => 0)} por #{item.cantidad} #{tipo.unidad} de #{tipo.nombre} merma de rollo "
+          -else
+            =link_to '[-]', item, method: :delete,:remote => true
+            ="#{number_to_currency(suma,:precision => 0)} por #{item.cantidad} #{tipo.unidad} de #{tipo.nombre} merma de rollo "
+

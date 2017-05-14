@@ -1,0 +1,44 @@
+development_gestion2728:
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  pool: 10
+  database: alectrico
+  username: mooc_user
+  password: '1'
+
+development:
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  pool: 10
+  database: development
+  username: mooc_user
+  password: '1'
+
+
+
+
+alectrico:
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  pool: 10
+  database: alectrico
+  username: mooc_user
+  password: '1'
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  pool: 10
+  database: test_stats
+  username: mooc_user
+  password: '1'
+
+electrico_heroku:
+  adapter: postgresql
+  encoding: utf8
+  url:  <%= ENV["DATABASE_STATS_URL"] %>
+  pool: <%= ENV["DB_POOL"] || 5 %>

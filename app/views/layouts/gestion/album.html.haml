@@ -1,0 +1,22 @@
+
+-content_for :before_assets do
+  = stylesheet_link_tag 'gestion/album.css',  media: 'all', 'data-turbolinks-track': 'reload'
+  = javascript_include_tag "jekyll/vendor/holder.min.js", 'data-turbolinks-track': 'reload'
+
+
+
+-content_for :main_menu do
+  = render '/layouts/main_menu'
+
+-content_for :menu_footer do
+  = render '/layouts/menu_footer'
+
+-content_for :contenido do
+  = render '/layouts/notifications'
+  .jumbotron
+    = yield
+-#ontent_for :after_assets do
+  = javascript_include_tag "jekyll/vendor/holder.min.js", 'data-turbolinks-track': 'reload'
+
+= render template: 'layouts/application_gestion'
+

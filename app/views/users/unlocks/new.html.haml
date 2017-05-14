@@ -1,0 +1,14 @@
+.container
+  = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { :class => "form-signin",method: :post }) do |f|
+    = devise_error_messages!
+    %h2.form-signin-heading Reenvío de instrucciones de desbloqueo
+
+    %label.sr-only{:for => "email"} email
+    = f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "email",:type => "email"
+    %label.sr-only{:for => "password"} Contraseña
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} caracteres como mínimo)
+    .actions
+      = f.submit "Enviar"
+    = render "shared/devise_shared_links"

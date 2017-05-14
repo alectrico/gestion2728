@@ -1,0 +1,5 @@
+- content_for :jumbo_contenido do
+  %h1 Agregando evidencia
+
+  = render 'form', gestion_evidencia:@gestion_evidencia
+  = link_to 'Lista', gestion_evidencias_path

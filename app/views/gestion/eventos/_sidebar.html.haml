@@ -1,0 +1,11 @@
+-if params[:id] 
+  .list-group-item
+    = link_to 'Pdf',  download_pdf_evento_path(@gestion_evento)
+  .list-group-item
+    = link_to 'Ver',      @gestion_evento
+-if params[:id]
+  .list-group-item
+    = link_to 'Editar',       edit_evento_path(@gestion_evento)
+  .list-group-item
+    = link_to 'Eliminar', @gestion_evento, method: :delete, data: { confirm: '¿Está seguro?' }
+

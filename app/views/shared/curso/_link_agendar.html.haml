@@ -1,0 +1,8 @@
+%ul.no-list-style.footer-navigate-section
+  -if current_user.nil?
+    -#i=link_to "Visita Gratuita", landing_pages_contact_us_url
+    %li=link_to "Agendar una Visita", new_openevent_url
+  -else
+    %li=link_to "Agendar una Visita", new_event_url
+  %li= link_to "Ver trabajos Realizados por aléctrico", proyectos_url
+

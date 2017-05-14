@@ -1,0 +1,3 @@
+clear
+echo "puede demorar un poco, buscando marca PORHACER en todos los archivos"
+rails notes:custom ANNOTATION=PORHACER

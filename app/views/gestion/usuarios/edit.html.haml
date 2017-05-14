@@ -1,0 +1,10 @@
+-content_for :jumbo_contenido do
+  %h1 Editando usuario
+
+
+  = render 'form'
+
+  = link_to 'Ver', @gestion_usuario
+  \|
+  = link_to 'Lista', gestion_usuarios_path
+

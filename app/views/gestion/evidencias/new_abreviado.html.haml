@@ -1,0 +1,15 @@
+
+%h1 Agregando Evidencia
+= form_for(@gestion_evidencia,:url => {:action => 'create'},:html => {:multipart => true}) do |form|
+  %p#notice= notice
+  - if @gestion_evidencia.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gestion_evidencia.errors.count, "error")} prohibited this presupuesto_foto from being saved:"
+      %ul
+        - @gestion_evidencia.errors.full_messages.each do |msg|
+          %li= msg
+  = form.file_field :image_file
+  = form.submit
+
+= link_to 'Lista', gestion_evidencias_path
+

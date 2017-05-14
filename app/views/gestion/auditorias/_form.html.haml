@@ -1,0 +1,22 @@
+
+= form_for @gestion_auditoria do |f|
+  - if @gestion_auditoria.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gestion_auditoria.errors.count, "error")} impide(n) que se pueda guaradar este registro de auditoría:"
+      %ul
+        - @gestion_auditoria.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.select_con_label(:usuario_id, @gestion_usuarios.map {|u| ["id: " + u.id.to_s + " | " + u.nombre + " | " + u.email  , u.id]})
+
+
+
+  = f.select_con_label(:registro_id, @gestion_registros.map {|u| ["id: " + u.id.to_s + " | " + u.razon_social  , u.id]})
+
+
+  = f.select_con_label(:tipo_auditoria_id, @gestion_tipo_auditorias.map {|u| ["id: " + u.id.to_s + " | " + u.nombre  , u.id]})
+      
+
+
+  .actions
+    = f.submit 'Guardar'

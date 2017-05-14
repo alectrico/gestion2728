@@ -1,0 +1,17 @@
+-content_for :jumbo_contenido do
+
+  %p#notice= notice
+
+
+  %p
+    %b Nombre:
+    = @gestion_tipo_auditoria.nombre
+
+
+
+  = link_to "Editar", edit_gestion_tipo_auditoria_path(@gestion_tipo_auditoria)
+  \|
+  = link_to 'Lista', gestion_tipo_auditorias_path
+
+-content_for :has_many do
+  = render 'trozo_criterios'

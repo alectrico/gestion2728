@@ -1,0 +1,1 @@
+heroku pg:transfer --from postgres://mooc_user:1@localhost:5432/gestion --to postgres://nitgqhuhocilto:90dc465cbbe0a018eb76462da5c9ebe075ccb5e24e77db80e2c9c33283dbd7a6@ec2-107-20-149-243.compute-1.amazonaws.com:5432/d6f838erd6j88n --app gestion2728

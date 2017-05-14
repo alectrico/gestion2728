@@ -1,0 +1,14 @@
+%nav.col-sm-3.col-md-2.hidden-xs-down.bg-faded.sidebar
+  -#
+    %ul.nav.nav-pills.flex-column
+      %li.nav-item
+        %a.nav-link{:href => "/gestion/registros"}
+          Resumen
+          %span.sr-only (current)
+      %li.nav-item
+        %a.nav-link{:href => "?presentada=true"} Presentadas
+      %li.nav-item
+        %a.nav-link{:href => "?no_presentada=true"} No presentadas
+      %li.nav-item
+        %a.nav-link{:href => "?en_auditoria=true"} En Auditoría
+

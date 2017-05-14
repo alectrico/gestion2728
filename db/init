@@ -1,0 +1,2 @@
+rails g scaffold gestion/registro region:string rut:numeric dv:string razon_social:string nombre_fantasia:string direccion:string comuna:string fono:string comportamiento:string email:string email_secundario:string --force
+

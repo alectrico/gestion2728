@@ -1,0 +1,51 @@
+
+
+
+= form_for @presupuesto_foto do |f|
+  %p#notice= notice
+
+  - if @presupuesto_foto.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@presupuesto_foto.errors.count, "error")} prohibited this presupuesto_foto from being saved:"
+      %ul
+        - @presupuesto_foto.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :descripcion
+    = f.text_field :descripcion
+  .field
+    = f.label :tipo_contenido
+    = f.text_field :tipo_contenido
+  .field
+    = f.label :nombre_archivo
+    = f.text_field :nombre_archivo
+  -#.field
+    = f.label :bits
+    = f.text_field :bits
+  .field
+    = f.label :thumbnail
+    = f.text_field :thumbnail
+  .field
+    = f.label :tempfile
+    = f.text_field :tempfile
+  .field
+    = f.label :image_uid
+    = f.text_field :image_uid
+  .field
+    = f.label :image_name
+    = f.text_field :image_name
+  .field
+    = f.label :fotolizable_id
+    = f.number_field :fotolizable_id
+  .field
+    = f.label :fotolizable_type
+    = f.text_field :fotolizable_type
+  .field
+    = f.label :cv_id
+    = f.number_field :cv_id
+  .field
+    = f.label :presupuesto_id
+    = f.number_field :presupuesto_id
+  .actions
+    = f.submit 'Save'

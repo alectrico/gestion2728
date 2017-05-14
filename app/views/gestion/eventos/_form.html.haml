@@ -1,0 +1,49 @@
+- content_for :jumbo_contenido do
+  = form_for @gestion_evento do |f|
+    - if @gestion_evento.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@gestion_evento.errors.count, "error")} prohibited this gestion_evento from being saved:"
+        %ul
+          - @gestion_evento.errors.full_messages.each do |msg|
+            %li= msg
+    .form-group
+      .input-group.date
+        = f.text_field :titulo,:class => "form-control",:placeholder=> "Titulo"
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-tag
+
+
+    .form-group
+      .input-group.date
+        = f.text_field :descripcion,:class => "form-control",:placeholder=> "Descripción"
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-info-sign
+
+    .form-group
+      .input-group.date
+        = f.text_field :fecha,:class => "form-control",:placeholder=> "Fecha Hora"#, :type=> "date"
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-calendar
+
+    .form-group
+      .input-group.date
+        = f.text_field :fono,:class => "form-control",:placeholder=> "Fono"
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-phone-alt
+    .form-group
+      .input-group.date
+        = f.text_field :direccion,:class => "form-control",:placeholder=> "Dirección"
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-road
+    .form-group
+      .input-group.date
+        = f.text_field :coordenadas,:class => "form-control",:placeholder=> "Coordenadas"
+
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-map-marker
+
+    -#.form-group
+      = f.text_field :type
+    .actions
+      = f.submit 'Agendar'
+

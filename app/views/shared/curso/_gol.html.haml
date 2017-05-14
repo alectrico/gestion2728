@@ -1,0 +1,39 @@
+#encoding: ISO-8859-1
+-#%div{:style => "padding: 2px"}
+
+
+
+
+%div{:style => "overflow:auto; min-height:10%;border: solid 1px #dfdfdf; color: #686868; font: 13px Arial; margin:5%;width: 90%;font-size: 333x;font-family:Verdana"}
+  %div{:style => "padding:1 1px; background-color:#f5f5f5"}
+    -#%div{:style =>  "width:30%;float:left; padding: 10px; display: inline-flex"}
+    = link_to(image_tag(Foto.find_by_id(item.foto_id).nombre_archivo, :style => 'width:15%;height:auto;float:left;margin:1%'), '#')
+
+
+  %div{:style => "color: #686868;margin:5px; font-size: 1em; padding-bottom:6px"}
+
+
+    -if item.respond_to?(:titulo)
+      %p=item.titulo
+
+    -if item.respond_to?(:empresa)
+      %p=item.empresa
+
+    -if item.respond_to?(:idioma)
+      %p=item.idioma
+
+    -if item.respond_to?(:software)
+      %p=item.software
+
+    -if item.respond_to?(:tema)
+      %p=item.tema
+
+  %div{:style => "float:left;width:100%; background-color: #f5f5f5;" }
+    -#%div{:style =>"width: auto;float:left; background-color:yellow"}
+    -#-@edicion = Edicione.select { |ed| ed.edicion == 'todas' }
+    -#-if @edicion.count > 0
+      -@edicion.each do |ed|
+        -#%div{:style => "width:15%; float:left"}
+        = link_to(image_tag(ed.url,:width=> '5%',:style => 'border-style:none;margin:1%;width:10%;float:left' ), ed.createspace)
+
+

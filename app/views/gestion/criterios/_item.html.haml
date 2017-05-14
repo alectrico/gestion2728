@@ -1,0 +1,30 @@
+-#.col-6.col-xs-6.col-sm-6.col-md-3.col-lg-2
+-if item.id
+  -@gestion_criterio = item
+  .col-12.col-xs-12.col-sm-6.col-md-4.col-lg-3{:id => item.id}
+    .portfolio-item
+      = link_to('<span class="glyphicon glyphicon-list"></span> '.html_safe, gestion_criterio_path(item))
+      .portfolio-imagen
+        -#ink_to(image_tag(code_image_criterio_url(item), :style => "max-width: 100%"), item) if item.bits
+        -#item.prepare      
+        -#link_to(image_tag(item.imagen.thumb('130x130#').url,:width => "100%"),item) if item.bits
+      %span.badge.badge-success="directriz" if item.directriz
+
+      .porfolio-info-fade
+        %ul
+          %li.portfolio-project-name= item.texto
+          %li=item.numeral
+          -#%li
+            %b=item.criterio.numeral 
+            =item.criterio.texto
+        .ribbon-wrapper
+          .price-ribbon
+            -case item.type
+              -when "Gestion::Politica"
+                %span.badge.badge-info="politica"
+              -when "Gestion::Procedimiento"
+                %span.badge.badge-danger="procedimiento"
+              -when "Gestion::Requisito"
+                %span.badge.badge-warning="requisito"
+              -when "Gestion::Criterio"
+                %span.badge.badge-info="criterio"

@@ -1,0 +1,40 @@
+-#if current_user.nil?
+=form_for User.new,:remote => true,:only_path => false do |f|
+  -#form_errors_for User.new
+  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+  .form-group
+    .col-sm-6
+      
+      = f.text_field :name, :class => "form-control",:placeholder => "Nombre", :type => "hidden"
+
+
+  .row
+    .col-lg-4.col-lg-offset-4.col-sm-6.col-sm-offset-3
+      .input-group
+        %input.form-control.input-lg{:id => "register-username",:placeholder => "Su nombre",:name => "user[name]", :type => "text"}/
+        %span.input-group-btn
+    .col-sm-6.col-sm-offset-1.social-login
+      %p Usted puede usar su cuenta de Facebook para registrarse en #{Domain.get_modulo}
+      .social-login-buttons
+        %fb:login-button{:onlogin => "checkLoginState();", :scope => "public_profile,email"}
+        #status
+
+  .row
+    .col-lg-4.col-lg-offset-4.col-sm-6.col-sm-offset-3
+      .input-group
+        %input.form-control.input-lg{:id => "register-email",:placeholder => "Su email",:name => "user[email]", :type => "text"}/
+        %span.input-group-btn
+          %button{:value => "Registrar", :type => "commit"} Entrar!
+ 
+  .form-group
+    .col-sm-6
+      = f.password_field :password,:class => "form-control", :placeholder => "password", :type => "hidden"
+  .form-group
+    .col-sm-6
+      = f.password_field :password_confirmation ,:class => "form-control",:placeholder => "confirmación de password", :type => "hidden"
+  .form-group
+    .col-sm-6
+      = f.text_field :fono ,:class => "form-control",:placeholder => "fono", :type => "hidden"
+
+= render '/facebook/facebook_sdk'
+

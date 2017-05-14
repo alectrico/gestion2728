@@ -1,0 +1,19 @@
+#encoding: UTF-8
+%div{:style => "padding: 20px; min-height:80px"}
+  %div{:style => "min-height: 50%; min-width:10px; max-width: 50%;width:180px;widht:30%; vertical-align:top; float:left; padding-right: 15px; margin:1px; margin-botton:15px"}
+
+    -#%span{:style => "color: #686868;margin-top:20px; padding-bottom:6px"}
+      -#%a{:href=>"tel:#{number_to_phone(user.fono)}"}=number_to_phone(user.fono)
+    =link_to(image_tag(Rails.configuration.domain["brand_logo"],:opacity => "0.4", :style=>"padding:0px;padding-top:0px;padding-left:0px;border-style:none; opacity: 0.4; filter: alpha(opacity=40);width:100%"),root_url)
+
+  %span{:style => "color: #686868;margin-top:20px; padding-bottom:6px"}
+    %div
+      %table
+        -u=@ingeniero
+        -date = @evento.fecha
+        %p Estimad@ #{@user.name}, se ha coordinado un evento en #{@evento.direccion} para #{@evento.titulo} durante el día #{I18n.l( DateTime.parse(date.localtime.to_s), :format => :evento)}
+        %p= "Ud será atendido por #{u.name}. #{u.email}" unless u.nil?
+        -if !u.nil?
+          %a{:href=>"tel:#{number_to_phone(u.fono)}"}=number_to_phone(u.fono) 
+
+        

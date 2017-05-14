@@ -1,0 +1,10 @@
+-content_for :jumbo_contenido do
+    
+  %p#notice= notice
+  %div
+    =image_tag(code_image_foto_url(@presupuesto_foto), :style => "max-width: 50%")
+
+  = link_to "Editar", edit_presupuesto_foto_path(@presupuesto_foto)
+  \|
+  = link_to 'Volver', presupuesto_fotos_path
+

@@ -1,0 +1,20 @@
+!!!
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9"> el mismo archivo. Si ése es el caso,
+/ [if gt IE 8]><! 
+/ <![endif]
+
+%html
+  %head
+    %meta content='text/html; charset=utf-8' http-equiv='Content-Type'
+  %body
+    %h1 
+      Bienvenido a 2728 <%= @usuario.nombre %>
+    %p
+      Usted ha sido aceptado en 2728
+      Su nombre de usuario es <%= @usuario.login %>
+
+    %p
+      Para hacer login en el sitio, solo tiene que seguir el siguiente link: <%= @url %>
+

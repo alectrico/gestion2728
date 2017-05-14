@@ -1,0 +1,50 @@
+#!/usr/bin/ruby
+#
+require 'open3'
+
+
+#make_log, s = Open3.capture2e("make")
+
+#Llamo a cada uno en serie y los termino si demoran mucho
+
+ Open3.pipeline_start("make mobi") {|ts|
+#       sleep 1000
+#       t = ts[0]
+#       Process.kill("TERM", t.pid)
+#       p t.value #=> #<Process::Status: pid 911 SIGTERM (signal 15)>
+     }
+ 
+ Open3.pipeline_start("make pdf") {|ts|
+#       sleep 1000
+#       t = ts[0]
+#       Process.kill("TERM", t.pid)
+#       p t.value #=> #<Process::Status: pid 911 SIGTERM (signal 15)>
+    }
+
+
+=begin
+require 'thread'
+
+   mutex = Mutex.new
+   resource = ConditionVariable.new
+
+   a = Thread.new {
+     exec('make mobi')
+     mutex.synchronize {
+       # Thread 'a' now needs the resource
+       resource.wait(mutex)
+       exec('make mobi')
+      # 'a' can now have the resource
+     }
+   }
+
+   b = Thread.new {
+     exec('make pdf')
+     mutex.synchronize {
+       # Thread 'b' has finished using the resource
+       resource.signal
+     }
+   }
+# print  exec('make help');
+=end
+

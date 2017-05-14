@@ -1,0 +1,206 @@
+marketing_pack_gestion: &marketing_pack_gestion
+  propiedad_google_analytics: 'UA-86536511-4'
+  jumbotron_heading: "brand/fondocuatricolorcon2728.png"
+  brand_logo: "brand/logo2728.png"
+  brand_card1: "brand/anden.jpg"
+  brand_card2: "brand/fiambreria.jpg"
+  brand_card3: "brand/fotoisabel.png"
+  focus: 'gestion'
+  empresa: '2728'
+  autor_nombre: 'Isabel Rodríguez Méndez'
+  autor_titulo: 'Ingeniero en Gestión de Calidad y Ambiente'
+  autor_universidad: 'Universidad Tecnológica de Chile'
+  about_1: 'Nch 2728.of.2015'
+  concepto_mail_titulo: 'Ofrece '
+  concepto_mail_contenido: 'por parte de MHC Ingeniería. Servicios de Asesoría en Implementación, Mantención y Auditorías Internas específicas para OTEC.'
+  resume: 'Ingeniero en Gestión de Calidad y Ambiente con más de 20 años de carrera en áreas Producción, Calidad y Comercial en empresa multinacional COLGATE-PALMOLIVE S.A..'
+  
+  contacto: 'Isabel Rodríguez Méndez. Ingeniero en Gestión de Calidad y Ambiente con más de 20 años de carrera en áreas Producción, Calidad y Comercial en empresa multinacional COLGATE-PALMOLIVE S.A..'
+  about: 'Este es un sitio web dinámico diseñado e implementado con la idea de facilitar la toma de evidencias de cumplimiento de requisitos, políticas y criterios en general que se puedan usar como referencia para concluir sobre conformidades normativas. Las tomas de evidencias se dan en el contexto de los sistema de gestión de calidad y adquieren mayor importancia cuando se usan en auditorías. El sitio admite a uno o varios administradores y a auditores que le son subordinados. Los auditores reciben autorización para hacer login y para estar activos en la asignación de las auditorías. Cuando un auditor es asignado a una auditoría, puede comenzar la toma de evidencias para esa auditoria, respondiendo a su preparación previa como auditor debiera ser capaz de determinar si lo que observa es conforme o no a  un requisito normativo. El resultado de estas acciones de los auditores permite cumplir con la exigencia de los registros, los que son documentos (información y soporte), están accesibles desde los puntos de entrega, se pueden asignar usuarios administradores que acceden con contraseña, la información puede estar almacenada durante tres años y es fácilmente encontrable a través de buscadores que ofrece el sitio web.'
+  gancho: 'Asegúrese de obtener las franquicias que otorga el Estado de Chile a las OTEC que demuestran cabal cumplimiento normativo'
+  main_call_to_action: 'Agende visita'
+  secondary_call_to_action: 'NCH 2728'
+
+  modulo: gestion
+  focus:   gestion
+  base_title: "2728: OTECS"
+  default_from: icha.rodriguez@gmail.com
+
+
+marketing_pack_alectrico: &marketing_pack_alectrico
+  sec_validador_instaladores: "http://ww21.sec.cl/validadorInstaladores/"
+  default_from: presupuesto@alectrico.com
+  modulo: alectrico
+  url_curso: http://cursoinstrumentacion.herokuapp.com
+  empresa: 'alectrico'
+  base_title: "Instalador Eléctrico Autorizado"
+  dir_imagenes_cvs: public/images
+  default_from: ventas@alectrico.com
+  foto_id: 147
+  focus: alectrico
+
+
+marketing_pack_instrumentacion: &marketing_pack_instrumentacion
+  modulo: cursoinstrumentacion
+  focus: instrumentacion
+
+maketing_pack_seo: &marketing_pack_seo
+  focus: seo
+
+marketing_pack_api_electrica: &marketing_pack_api_electrico
+  focus: api_electrica
+
+
+
+#se usa para cucumbear alectrico suponiendo cero datos en base de datos
+test_alectrico: #anteriormente test, pero debi usar test para gestion
+  <<: *marketing_pack_alectrico
+  assets_prefix: /test/assets
+  name: www.example.com #estuvo un tiempo bien con //alectrico.com hasta que
+  name_https: https://www.example.com
+  name_http: http://www.example.com
+
+
+development_300:
+  <<: *marketing_pack_alectrico
+  assets_prefix: /dev_alectrico/assets
+  name: //alectrico.com:3000
+  name_https: https://alectrico.com:3000
+  name_http: http://alectrico.com:3000
+
+
+electrico_heroku:
+  <<: *marketing_pack_alectrico
+
+  mailgun_api_pubky: pubkey-80h35useo1x6d9p-ezj8jrp3r-ki31t9
+  mailgun_api_key: key-4iwbq4j8c9lvjb3s-b5ygzsyd65bwkt3 
+
+  assets_prefix: /assets
+  name: www.alectrico.com
+  name_https: https://www.alectrico.com
+  name_http: http://www.alectrico.com
+  name_http_in_the_wild: http://www.alectrico.com
+
+  page_access_token: 'EAACEdEose0cBADo6Huu1dkZCckestvnivq4YsjhkY5MkZBdxZBPJxCWCyblGWHY5gSP1tifmiWLrD4nKNit7X0IWd4Y8ufFz6NyRpCEhgwAJB7ZCfsls1ZCS2ul1AQPjCwZCyZCZAz2BIqMgp0GuzLMEiDBRZAwT2tkD8AJ4cXK3aMQZDZD'
+  fb_app_id: 1777886622479021
+  fb_app_secret: 'e23ceb738fe3beee245afdf5f8790093'
+  propiedad_google_analytics: 'UA-86536511-2'
+
+
+alectrico_heroku:
+  <<: *marketing_pack_alectrico
+  assets_prefix: /assets
+  name: www.alectrico.cl
+  name_https: https://www.alectrico.cl
+  name_http: http://www.alectrico.cl
+  name_http_in_the_wild: http://www.alectrico.cl
+  propiedad_google_analytics: 'UA-83835508-3'
+
+
+
+alectrico:
+  <<: *marketing_pack_alectrico
+  assets_prefix: /alectrico/assets
+  name: prueba.alectrico.com #se utiliaza en los config/environment/env.rb
+  name: http://192.168.1.190
+  name_https: https://prueba.alectrico.com 
+  name_http: http://prueba.alectrico.com
+  name_http: http://192.168.1.190
+  name_http_in_the_wild: http://www.alectrico.com
+  tracking: '_google_Analytic_alectrico' 
+
+
+alectrico_191:
+  <<: *marketing_pack_alectrico
+  assets_prefix: /alectrico/assets
+  name: prueba.alectrico.com #se utiliaza en los config/environment/env.rb
+  name: http://192.168.1.191
+  name_https: https://prueba.alectrico.com
+  name_http: http://prueba.alectrico.com
+  name_http: http://192.168.1.191
+  name_http_in_the_wild: http://www.alectrico.com
+  tracking: '_google_Analytic_alectrico'
+
+mobi:
+  <<: *marketing_pack_alectrico
+  name: //instrumentacion.mobi
+  modulo: cursoinstrumentacion
+
+production:
+  <<: *marketing_pack_alectrico
+  name: //instrumentacion.herokuapp.com
+  #no terminado
+
+development:
+  <<: *marketing_pack_alectrico
+  assets_prefix: /dev_alectrico/assets
+  name: //192.168.1.190
+  name_https: https://192.168.1.190
+  name_http: http://192.168.1.190
+
+#usado para probar las paypal de alectrico, Probar todavia
+alectrico_sandbox:
+  <<: *marketing_pack_alectrico
+  name: //alectrico.com
+
+
+
+
+
+mobi:
+  <<: *marketing_pack_instrumentacion
+  name: //instrumentacion.mobi
+
+production:
+  <<: *marketing_pack_instrumentacion
+  name: //instrumentacion.herokuapp.com
+
+test_cursoinstrumentacion: #cambiar a test cuando se este usando cucumber para
+  # probar el curso
+  <<: *marketing_pack_instrumentacion
+  name: //instrumentacion.mobi
+  name_https: https://instrumentacion.mobi
+  name_http: http://instrumentacion.mobi
+  default_from: http://instrumentacion.curso@gmail.com
+  modulo: cursoinstrumentacion
+
+
+
+
+
+
+gestion2728_heroku:
+  <<: *marketing_pack_gestion
+  assets_prefix: /assets
+  name: gestion2728.herokuapp.com
+  name_https: https://gestion2728.herokuapp.com
+  name_http: http://gestion2728.herokuapp.com
+  name_http_in_the_wild: http://gestion2728.herokuapp.com
+  dir_imagenes_cvs: public/images
+
+
+development_gestion2728:
+  <<: *marketing_pack_gestion
+  assets_prefix: /dev_gestion2728/assets
+  name: //192.168.1.190
+  name_https: https://192.168.1.190
+  name_http: http://192.168.1.190
+  dir_imagenes_cvs: public/images
+  default_from: gestion2728@alectrico.com
+
+
+test:
+  <<: *marketing_pack_gestion
+  assets_prefix: /dev_gestion2728/assets
+  name: //192.168.1.190
+  name_https: https://192.168.1.190
+  name_http: http://192.168.1.190
+  dir_imagenes_cvs: public/images
+  default_from: gestion2728@alectrico.com
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+-#usad por todos los controladores de la aplicacion de gestion. envia contenido al layout principal en application_gestion. 
+-#no se usa en las acciones que no sean index, para ellos el controlador destina el layout gestion/uno
+-#layout gestion
+-content_for :before_assets do
+  = stylesheet_link_tag 'gestion/gestion.css',  media: 'all', 'data-turbolinks-track': 'reload' 
+
+-content_for :contenido do
+  %nav.navbar.navbar-toggleable-md.navbar-inverse.fixed-top.bg-inverse
+    %button.navbar-toggler.navbar-toggler-right.hidden-lg-up{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    %a.navbar-brand{:href => ""} Presupuesto
+    #navbarsExampleDefault.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
+        = render 'layouts/signin'
+      %form.bd-search.form-inline.my-2.my-lg-0
+        %input#search-input.form-control.mr-sm-2{:autocomplete => "off", :placeholder => "Buscar...", :type => "text"}/
+        #search-results.dropdown-menu.bd-search-results
+
+        -#%li.nav-item.dropdown
+          %a#dropdown01.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"} Dropdown
+          .dropdown-menu{"aria-labelledby" => "dropdown01"}
+            %a.dropdown-item{:href => "?presentada=true"} Presentadas
+            %a.dropdown-item{:href => "?no_presentada=true"} No Presentadas
+            %a.dropdown-item{:href => ""} Todas
+          
+        -#
+          %li.nav-item
+            %a.nav-link{:href => "#"} Settings
+          %li.nav-item
+            %a.nav-link{:href => "#"} Profile
+          %li.nav-item
+            %a.nav-link{:href => "#"} Help
+  .container-fluid
+    .row
+      = render 'nav_izquierda'
+      %main.col-sm-9.offset-sm-3.col-md-10.offset-md-2.pt-3
+        %p#notice.alert.alert-danger= notice
+
+        = render "panel"
+        = yield
+
+  -#=render '/layouts/bottom_gestion'
+
+-content_for :busqueda do
+  = render  'busqueda'
+
+
+= render template: '/layouts/application_presupuesto'
+

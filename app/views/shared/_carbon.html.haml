@@ -1,0 +1,8 @@
+-if Rails.env.include?('heroku')
+  %script#_carbonads_js{:async => "", :src => "https://cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=getbootstrapcom", :type => "text/javascript"}
+-else
+  =javascript_include_tag  'carbon/carbon.js' 
+  =javascript_include_tag "carbon/property.js"
+  =javascript_include_tag "carbon/element.js"
+
+

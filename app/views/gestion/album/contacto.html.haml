@@ -1,0 +1,31 @@
+.container.bg-inverse
+  .row
+    .col-sm-8.py-4
+      = image_tag "#{Rails.configuration.domain['brand_card3']}"
+      %h4.text-white Administradora
+      %p.text-white=Rails.configuration.domain['contacto']
+    .col-sm-4.py-4
+      %h4.text-white Contacto
+      %ul.list-unstyled
+        %li
+          %a.text-white{:href => "#"} Sígame en Twitter
+        %li
+          %a.text-white{:href => "#"} Opine en Facebook
+        %li
+          %a.text-white{:href => "#"} Envíeme un correo
+-#.album.text-muted
+  .container
+    .row
+      .card
+        %p.float-right Corrija a sus empleados!
+       
+        = image_tag "#{Rails.configuration.domain['brand_card1']}",:style => "height: 25%; width: auto"
+
+      .card
+        %p.float-right No engañe a sus clientes! 
+        = image_tag "#{Rails.configuration.domain['brand_card2']}",:style => "height: 25%; width: auto"
+      .card
+        %p.float-right Asesórese con  Calidad ! 
+        = image_tag "#{Rails.configuration.domain['brand_card3']}",:style => "height: 25%; width: auto"
+
+

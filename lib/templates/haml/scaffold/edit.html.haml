@@ -1,0 +1,9 @@
+%h1 Editando <%=plural_name.singularize %>
+<% @namespace_ = capture do %><% if not class_name.empty? %><%=class_name.to_s.deconstantize.downcase %>_<%end%><%end%>
+
+= render 'form'
+
+= link_to 'Ver', @<%= @namespace_%><%=plural_name.singularize %>
+\|
+= link_to 'Lista', <%= @namespace_%><%=plural_name %>_path
+

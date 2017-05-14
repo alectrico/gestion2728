@@ -1,0 +1,10 @@
+%html.no-js{ "xmlns:og" => "http://opengraphprotocol.org/schema/", "xmlns:fb" => "http://www.facebook.com/2008/fbml", "xmlns:website" => "http://ogp.me/ns/website", :lang => "es-CL", "itemscope itemtype" => "http://schema.org/WebPage", "xmlns" => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}
+
+  %meta{:charset => "utf-8"}
+  %meta{:name => "viewport", :content => 'width=device-width,initial-scale=1, shrink-to-fit=no'}
+  %meta{:property => "layout", :content => 'components'}
+  = render '/layouts/head_content_components'
+
+%body
+  = yield
+  = render '/layouts/bottom_content_components'

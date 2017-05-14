@@ -1,0 +1,63 @@
+#encoding: UTF-8
+%div{:style => "padding: 20px; min-height:80px"}
+  %div{:style => "min-height: 50%; min-width:10px; max-width: 50%;width:180px;widht:30%; vertical-align:top; float:left; padding-right: 15px; margin:1px; margin-botton:15px"}
+
+  %a{:href=>"tel:#{number_to_phone(@cliente.fono)}"}=number_to_phone(@cliente.fono)
+
+  %span{:style => "color: #686868;margin-top:20px; padding-bottom:6px"}
+    %div
+      %table
+        %tr
+          %td
+            Presupuesto
+          %th
+            =@presupuesto.descripcion unless @presupuesto.nil?
+        %tr
+          %td
+            Administrador a cargo
+          %td
+            =@presupuesto.admin.name unless @presupuesto.nil?
+        %tr
+          %td
+            ="Fono" unless @presupuesto.nil?
+          %td
+            %a{:href=>"tel:#{number_to_phone(@cliente.fono)}"}=number_to_phone(@presupuesto.admin.fono) 
+        %tr
+          %td  
+            email
+          %td
+            =@presupuesto.admin.email 
+        %tr
+          %td
+            Cliente
+          %td
+            =@cliente.name
+        %tr
+          %td
+            Fono
+          %td
+            %a{:href=>"tel:#{number_to_phone(@cliente.fono)}"}=number_to_phone(@cliente.fono) 
+        %tr
+          %td
+            Fecha
+          %td
+      
+            -date = @evento.fecha     
+            =I18n.l( DateTime.parse(date.localtime.to_s), :format => :evento)
+        %tr
+          %td
+            Título
+          %td
+            =@evento.titulo
+
+        %tr
+          %td
+            Descripcion
+          %td
+            =@evento.descripcion
+
+        %tr
+          %td
+            Dirección
+          %td
+            =@evento.direccion

@@ -1,0 +1,18 @@
+.container
+  .row.row-offcanvas.row-offcanvas-right
+    .col-12.col-md-9
+      %p.float-right.hidden-md-up
+        %button.btn.btn-primary.btn-sm{"data-toggle" => "offcanvas", :type => "button"} Menú
+      .jumbotron
+        =yield
+    #sidebar.col-6.col-md-3.sidebar-offcanvas
+      = render 'presupuesto/fotos/sidebar_elemento'
+      / /span
+  / /row
+  %hr/
+  %footer
+    %p © Alexsoft 2017
+
+-#content_for :busqueda do
+  = render 'busqueda'
+

@@ -1,0 +1,5 @@
+#encoding: ISO-8859-1
+-if @feed_items.any?
+  %ol.microposts
+    = render( :partial=> 'shared/item_micropost', :collection=> @feed_items)
+  -#= will_paginate @feed_items

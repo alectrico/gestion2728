@@ -1,0 +1,47 @@
+-#.col-6.col-xs-6.col-sm-6.col-md-3.col-lg-2
+-if item_row.id
+  -#li.microposts{:id => "criterio#{item_row.id}"}
+  %tr.microposts{:id => "criterio#{item_row.id}"}
+
+    %td.alert.alert-danger
+      #{link_to '[-]', gestion_criterio_path(item_row), method: :delete,:remote => true} 
+    %td
+      .row{:class => "hidden-md-up"}
+        %span.badge.badge-success="directriz" if item_row.directriz
+        -case item_row.type
+          -when "Gestion::Politica"
+            %span.badge.badge-info="politica"
+          -when "Gestion::Procedimiento"
+            %span.badge.badge-danger="procedimiento"
+          -when "Gestion::Requisito"
+            %span.badge.badge-warning="requisito"
+          -when "Gestion::Criterio"
+            %span.badge.badge-info="criterio"
+
+      =link_to('<span class="glyphicon glyphicon-list"></span> '.html_safe, gestion_criterio_path(item_row)) 
+      %span
+        %strong= item_row.numeral
+      %span= item_row.texto
+    %td{:class => "hidden-sm-down"}
+      %span.badge.badge-success="directriz" if item_row.directriz
+      -case item_row.type
+        -when "Gestion::Politica"
+          %span.badge.badge-info="politica"
+        -when "Gestion::Procedimiento"
+          %span.badge.badge-danger="procedimiento"
+        -when "Gestion::Requisito"
+          %span.badge.badge-warning="requisito"
+        -when "Gestion::Criterio"
+          %span.badge.badge-info="criterio"
+
+   
+      -#%span.badge.badge-warning="directriz" if item_row.directriz
+      -#case item_row.type
+        -when "Gestion::Politica"
+          %span.badge.badge-info="politica"
+        -when "Gestion::Procedimiento"
+          %span.badge.badge-danger="procedimiento"
+        -when "Gestion::Requisito"
+          %span.badge.badge-warning="requisito"
+        -when "Gestion::Criterio"
+          %span.badge.badge-info="criterio"

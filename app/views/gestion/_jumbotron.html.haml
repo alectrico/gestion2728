@@ -1,0 +1,18 @@
+=content_for?(:contenido) ? yield(:contenido) : yield
+
+-#ontainer.hidden-xs-up
+  .row.row-offcanvas.row-offcanvas-left
+    .col-12.col-md-9
+      %p.float-right.hidden-md-up
+        -#%button.btn.btn-primary.btn-sm{"data-toggle" => "offcanvas", :type => "button"} Menú
+        = link_to 'Ver', url_for(item) , :class => "btn btn-primary"
+      .jumbotron
+        %tr
+          = content_for?(:contenido) ? yield(:contenido) : yield
+    #sidebar.col-6.col-md-3.sidebar-offcanvas
+      -#=render "sidebar"
+       
+
+  %p
+    -#= item.descripcion
+  %hr

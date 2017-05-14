@@ -1,0 +1,11 @@
+-if params[:id] 
+  .list-group-item
+    = link_to 'Pdf',  download_pdf_usuario_path(@gestion_usuario)
+.list-group-item
+  = link_to 'Ver',      @gestion_usuario
+-if params[:id]
+  .list-group-item
+    = link_to 'Editar',       edit_usuario_path(@gestion_usuario)
+.list-group-item
+  = link_to 'Eliminar', @gestion_usuario, method: :delete, data: { confirm: '¿Está seguro?' }
+

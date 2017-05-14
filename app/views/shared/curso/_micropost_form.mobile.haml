@@ -1,0 +1,7 @@
+#encoding: ISO-8859-1
+= form_for(@micropost) do |f|
+
+  = render 'shared/error_messages', object: f.object
+  .field
+    = f.text_area :content, placeholder: "Escriba un comentario en menos de 140 caracteres ..."
+  = f.submit "Postear", :class => "btn btn-large btn-primary"  

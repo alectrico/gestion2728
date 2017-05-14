@@ -1,0 +1,40 @@
+-content_for :jumbo_contenido do
+
+  = render partial: '/shared/badge_usuario', :locals => {:item => @gestion_usuario}
+
+  -#%p#notice= notice
+  %p
+    %b Nombre:
+    = @gestion_usuario.nombre
+  %p
+    %b Email:
+    = @gestion_usuario.email
+
+
+
+
+
+  %div
+
+    =image_tag(code_image_usuario_url(@gestion_usuario), :style => "max-width: 50%")
+    -#ink_to(image_tag(item.imagen.thumb('130x130#').url),item) if item.imagen
+
+  %p
+    %b Nombre:
+    = @gestion_usuario.nombre
+
+
+  %p
+    %b Email:
+    = @gestion_usuario.email
+
+
+  %p
+    %b Login:
+    = @gestion_usuario.login
+
+
+  = link_to "Editar", edit_gestion_usuario_path(@gestion_usuario)
+  \|
+  = link_to 'Lista', gestion_usuarios_path
+

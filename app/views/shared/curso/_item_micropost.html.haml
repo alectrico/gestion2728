@@ -1,0 +1,15 @@
+#encoding: ISO-8859-1
+
+%li{:id => _item_micropost.id}
+  -if !Rails.env.vbox?
+    = link_to gravatar_for(_item_micropost.user,'35'), _item_micropost.user
+  = link_to _item_micropost.user.name, _item_micropost.user
+  -c = wrap(_item_micropost.content)
+.textarea
+  -if current_user?(_item_micropost.user) 
+    = content_tag(:div," #{c}", class: "alert alert-#{:success}")
+  -else
+    = content_tag(:div, " #{c}", class: "alert alert-#{:error}")
+  Posteado hace #{time_ago_in_words(_item_micropost.created_at)} 
+  - if current_user?(_item_micropost.user)
+    =link_to "Eliminar",_item_micropost, method: :delete
